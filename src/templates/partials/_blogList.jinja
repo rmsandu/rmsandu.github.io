@@ -1,0 +1,22 @@
+{% for blogPost in blogPosts %}
+<div class="cell">
+    <div class="card">
+        <div class="card-header"
+            style="background-image: url('{{ url_for('static', filename=blogPost.coverImg) }}'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+
+            <h2 class="title  is-4 as-text-shadow">{{ blogPost.title | striptags }}</h2>
+            <h2 class="subtitle is-6 has-text-shadow">{{ blogPost.subtitle | striptags }} {{ blogPost.date |format_date }}</h2>
+            <p>Posted on {{ blogPost.date | format_date }}</p>
+        </div>
+        <div class="card-content">
+            <div class="content">
+                {{ blogPost.content | striptags | truncate(100, True, '...') }}
+                <a href="{{ url_for('render_blog_page', page_name=blogPost.filename) }}">Read More</a>
+            </div>
+            <div class="content">
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}

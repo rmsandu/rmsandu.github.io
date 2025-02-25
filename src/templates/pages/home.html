@@ -1,0 +1,58 @@
+{% extends "base.jinja" %}
+
+{% block main %}
+<section class="section">
+    <div class="container">
+        
+        <h1 class="title">Raluca-Maria Sandu</h1>
+        <div class="columns is-vcentered">
+            <div class="column iis-half-tablet is-one-fifth-desktop">
+                <figure class="image is-square" id="portrait">
+                    <img class="is-rounded" src="{{ url_for('static', filename='img/portrait_scaled.jpg') }}" />
+                </figure>        
+            </div>
+            <div class="column">
+                <div class="block">
+                    My research interests lie in the application of machine learning methods for image and language tasks. I currently work as a Machine Learning Engineer at <a href="https://www.accenture.com/ch-en">Accenture.</a></span>
+                </div>
+                <div class="block">
+                    I have graduated with a PhD in Biomedical Engineering, where my thesis topic was analysis of medical images for improving liver cancer treatments. You can find more information about my PhD topic in one of my <a href="https://www.frontiersin.org/journals/oncology/articles/10.3389/fonc.2021.623098/full">publications</a>. My PhD research has been integrated into a clinical <a href="https://www.cascination.com/en/ablasure">commercial product</a> at a Swiss medical device company.
+                </div>
+                <div class="block">
+                I like to spend time outdoors doing sports like surfing, skiing, snowboarding, or SUP. Additionally, I enjoy reading fiction and teaching new tricks to my cats.
+                </div>
+        
+                <div class="block">
+                    <span class="tag">Python</span>
+                    <span class="tag">PyTorch</span>
+                    <span class="tag">AWS</span>
+                    <span class="tag">Generative AI</span>
+                    <span class="tag">Machine Learning</span>
+                    <span class="tag">Computer Vision</span>
+                    <span class="tag">Diffusion Models</span>
+                    <span class="tag">CI/CD</span>
+                    <span class="tag">MLOps</span>
+                </div>
+            </div>
+          </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h1 class="title">Recent Blogposts</h1>
+
+
+        <div class="grid is-col-min-20">
+            {% with blogPosts=blogPosts[:2] %}
+                {% include 'partials/_blogList.jinja'  %}
+            {% endwith %}
+        </div>
+        
+        <a href="{{ url_for('blog') }}" class="button is-primary">Read more blogposts</a>
+    </div>
+</section>
+
+
+
+{% endblock %}
