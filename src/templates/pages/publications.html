@@ -3,9 +3,28 @@
 {% block main %}
 <section class="section">
     <div class="container">
+
         <h1 class="title">Publications</h1>
-        <p>Publications</p>
+
+        <div class="publications-grid">
+            {% for pub in data.publications %}
+            <div class="publication-card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <h3>{{ pub.title }}</h3>
+                        <p>{{ pub.authors }}</p>
+                    </div>
+                    <div class="card-back">
+                        <p class="summary">
+                            {{ pub.summary }}
+                            <a href="{{ pub.link }}" target="_blank" class="read-more">Read more</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
     </div>
 </section>
-
 {% endblock %}

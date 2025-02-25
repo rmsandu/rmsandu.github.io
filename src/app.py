@@ -1,19 +1,22 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, url_for
 import os
 import markdown
 import frontmatter
 from datetime import datetime
+from markdown_extensions import BulmaImageExtension
+import yaml
 
 app = Flask(__name__)
 
 PAGES_DIR = os.path.join(os.path.dirname(__file__), 'templates/pages')
 BLOG_DIR = os.path.join(os.path.dirname(__file__), 'templates/pages/blog')
+DATA_DIR = os.path.join(os.path.dirname(__file__), 'data')
 
 def list_blog_files():
     return [os.path.join(BLOG_DIR, f) for f in os.listdir(BLOG_DIR) if f.endswith('.md')]
 
 def get_blog_info(file):
-    with open(file, "r") as f:
+    with open(file, "r", encoding="utf-8") as f:
             md_data = frontmatter.load(f)
 
     title = md_data.get('title', 'No Title')
@@ -21,7 +24,7 @@ def get_blog_info(file):
     coverImg = md_data.get('cover-img', '')
     thumbnailImg = md_data.get('thumbnail-img', '')
     tags = md_data.get('tags', '')
-    content = markdown.markdown(md_data.content)
+    content = markdown.markdown(md_data.content, extensions=[BulmaImageExtension()])
     filename = os.path.splitext(os.path.basename(file))[0]
 
     # Convert date string to datetime object
@@ -52,6 +55,11 @@ def format_date(value, format='%B %d, %Y'):
 @app.route('/')
 def index():
     return render_template('pages/home.html', blogPosts=list_all_blog_info())
+
+@app.route('/publications')
+def publications():
+    with open(os.path.join(DATA_DIR, 'publications.yaml'), 'r', encoding='utf-8') as file:
+        return render_template('pages/publications.html', data = yaml.safe_load(file)) 
 
 @app.route('/<page_name>')
 def render_page(page_name):

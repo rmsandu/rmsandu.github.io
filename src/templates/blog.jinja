@@ -5,9 +5,9 @@
 <section class="hero is-medium" style="background-image: url('{{ url_for('static', filename=coverImg) }}'); background-size: cover; background-position: center; background-repeat: no-repeat;">
   <div class="hero-body">
     <div class="container">
-        <h1 class="title has-text-shadow">{{ title }}</h1>
-        <h2 class="subtitle has-text-shadow">{{ subtitle }}</h2>
-        <p>Posted on {{ date | format_date }}</p>
+        <h1 class="title has-text-shadow has-text-white">{{ title }}</h1>
+        <h2 class="subtitle has-text-shadow has-text-white">{{ subtitle }}</h2>
+        <p class="has-text-shadow has-text-white">Posted on {{ date | format_date }}</p>
     </div>
   </div>
 </section>

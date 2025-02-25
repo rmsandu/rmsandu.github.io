@@ -18,5 +18,9 @@
 }
 
 .has-text-shadow {
-    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7); /* Add shadow to text */
+    text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.7); /* Add shadow to text */
+}
+
+.blog-image {
+    max-width: 700px;
 }
