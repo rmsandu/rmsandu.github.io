@@ -3,7 +3,7 @@ import os
 import markdown
 import frontmatter
 from datetime import datetime
-from markdown_extensions import BulmaImageExtension
+from src.markdown_extensions import BulmaImageExtension
 import yaml
 
 app = Flask(__name__)
@@ -69,9 +69,9 @@ def render_page(page_name):
     else:
         return "Page not found", 404
     
-@app.route('/blog')
-def blog():
-    return render_template('pages/blog.html', blogPosts=list_all_blog_info())
+@app.route('/blogList')
+def blogList():
+    return render_template('pages/blogList.html', blogPosts=list_all_blog_info())
     
 @app.route('/blog/<page_name>')
 def render_blog_page(page_name):
