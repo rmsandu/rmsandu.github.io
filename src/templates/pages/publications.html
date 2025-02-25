@@ -6,22 +6,24 @@
 
         <h1 class="title">Publications</h1>
 
-        <div class="grid is-col-min-17">
-            {% for pub in data.publications %}
-            <div class="cell">
-                <div class="card">
-                    <div class="card-content publication-cards">
-                        <h3 class="title is-5">{{ pub.title }}</h3>
-                        <h4 class="subtitle is-6">{{ pub.authors }}</h4>
-                        <div class="block">
-                            {{ pub.summary  | truncate(400, True, '...') }}
-                            <br/>
-                            <a href="{{ pub.url }}" target="_blank">Read more</a>
+        <div class="fixed-grid has-1-cols-mobile has-2-cols-tablet has-2-cols-desktop">
+            <div class="grid">
+                {% for pub in data.publications %}
+                <div class="cell">
+                    <div class="card">
+                        <div class="card-content publication-cards">
+                            <h3 class="title is-5">{{ pub.title }}</h3>
+                            <h4 class="subtitle is-6">{{ pub.authors }}</h4>
+                            <div class="block">
+                                {{ pub.summary | truncate(400, True, '...') }}
+                                <br />
+                                <a href="{{ pub.url }}" target="_blank">Read more</a>
+                            </div>
                         </div>
                     </div>
                 </div>
+                {% endfor %}
             </div>
-            {% endfor %}
         </div>
     </div>
 </section>

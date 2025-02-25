@@ -1,33 +1,35 @@
-{% for blogPost in blogPosts %}
-<div class="cell">
-    <div class="card">
+<div class="fixed-grid has-1-cols-mobile has-2-cols-tablet has-2-cols-desktop">
+    <div class="grid">
+        {% for blogPost in blogPosts %}
+        <div class="cell">
+            <div class="card">
+                <div class="card-content blog-card-header-height"
+                    style="background-image: url('{{ url_for('static', filename=blogPost.coverImg) }}'); background-size: cover; background-position: center; background-repeat: no-repeat;">
 
-
-        <div class="card-content blog-card-header-height"
-            style="background-image: url('{{ url_for('static', filename=blogPost.coverImg) }}'); background-size: cover; background-position: center; background-repeat: no-repeat;">
-
-            <h2 class="title  is-4 as-text-shadow has-text-white">{{ blogPost.title | striptags }}</h2>
-            <h2 class="subtitle is-6 has-text-shadow has-text-white">{{ blogPost.subtitle | striptags }} {{
-                blogPost.date |format_date }}</h2>
-            <p class="has-text-shadow has-text-white">Posted on {{ blogPost.date | format_date }}</p>
-        </div>
-        <div class="card-content">
-            <div class="content">
-            <div class="block">
-             {{ blogPost.content | striptags | truncate(200, True, '...') }}
-                <a href="{{ url_for('render_blog_page', page_name=blogPost.filename) }}">Read More</a>
-            </div>
-               
-                <div class="block blog-card-tag-height">
-                    {% if blogPost.tags %}
-                        {% for tag in blogPost.tags %}
-                        <span class="tag">{{ tag }}</span>
-                        {% endfor %}
-                    {% endif %}
+                    <h2 class="title  is-4 as-text-shadow has-text-white">{{ blogPost.title | striptags }}</h2>
+                    <h2 class="subtitle is-6 has-text-shadow has-text-white">{{ blogPost.subtitle | striptags }} {{
+                        blogPost.date |format_date }}</h2>
+                    <p class="has-text-shadow has-text-white">Posted on {{ blogPost.date | format_date }}</p>
                 </div>
+                <div class="card-content">
+                    <div class="content">
+                        <div class="block">
+                            {{ blogPost.content | striptags | truncate(200, True, '...') }}
+                            <a href="{{ url_for('render_blog_page', page_name=blogPost.filename) }}">Read More</a>
+                        </div>
 
+                        <div class="block blog-card-tag-height">
+                            {% if blogPost.tags %}
+                            {% for tag in blogPost.tags %}
+                            <span class="tag">{{ tag }}</span>
+                            {% endfor %}
+                            {% endif %}
+                        </div>
+
+                    </div>
+                </div>
             </div>
         </div>
+        {% endfor %}
     </div>
 </div>
-{% endfor %}
