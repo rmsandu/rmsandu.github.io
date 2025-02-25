@@ -48,7 +48,7 @@ To solve this issue, the authors of the Dreambooth paper introduce **"prior-pres
 
 The first 2 photos are from the validation run in Weights & Biases. You can see at step 0 the model has no idea how Thor looks, but it outputs generic photos of cats. Whereas at step 300, the photos already start resembling Thor and at step 500 is clearly Thor (with minor artefacts.)
 ![Step 0 training](img/sdxl_step0.png)
-![Step 300 training](img/sdxl_step300.png){: .mx-auto.d-block :"}
+![Step 300 training](img/sdxl_step300.png)
 ![Step 300 training](img/sdxl_step500.png)
 
 ## Hyperparameters used for SDXL
@@ -145,29 +145,29 @@ Python Script if you have the resources to run Stable Diffusion locally (I don't
 - [https://harrywang.me/sd](https://harrywang.me/sd)
 
 
-![Thor](img/Thorfluff.png){: .mx-auto.d-block :}
+![Thor](img/Thorfluff.png)
 *The original Thor on the outdoors ladder.*
 
 **With prior-preservation:**
 
-![Thor](img/generated_135_Steps50.jpg){: .mx-auto.d-block :}
+![Thor](img/generated_135_Steps50.jpg)
 *Prompt: photo of TOK cat swimming with sharks and marine animals*
 
-![Thor](img/generated_562_Steps100.jpg){: .mx-auto.d-block :}
+![Thor](img/generated_562_Steps100.jpg)
 *Prompt: photo of TOK cat baking a cake wearing a chef hat and an apron.*
 
-![Thor](img/generated_955_Steps100_prompt.jpg){: .mx-auto.d-block :}
+![Thor](img/generated_955_Steps100_prompt.jpg)
 *Prompt: photo of TOK cat wearing a bonnet in the grass surrounded by yellow ducklings.*
 
-![Thor](img/generated_632_Steps100.jpg){: .mx-auto.d-block :}
+![Thor](img/generated_632_Steps100.jpg)
 *Prompt: photo of TOK cat on a skateboard, running away from an explosion, mission impossible*
 
 **Without prior-preservation:**
-![Thor](img/generated_312_Steps10_prompt.jpg){: .mx-auto.d-block :}
+![Thor](img/generated_312_Steps10_prompt.jpg)
 *Prompt: photo of TOK cat riding a motorcycle, wearing a black leather jacket.* 
 
-![Thor](img/generated_870_Steps30_lawyer.jpg){: .mx-auto.d-block :}
+![Thor](img/generated_870_Steps30_lawyer.jpg)
 *Prompt: photo of TOK cat dressed as a laywer, surrounded by letters in an office.* 
 
-![Thor](img/generated_460_Steps30_Superman.jpg){: .mx-auto.d-block :}
+![Thor](img/generated_460_Steps30_Superman.jpg)
 *Prompt: photo of TOK cat dressed as a Superman.* 
