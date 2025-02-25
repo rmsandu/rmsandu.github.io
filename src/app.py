@@ -56,12 +56,12 @@ def format_date(value, format='%B %d, %Y'):
 def index():
     return render_template('pages/home.html', blogPosts=list_all_blog_info())
 
-@app.route('/publications')
+@app.route('/publications.html')
 def publications():
     with open(os.path.join(DATA_DIR, 'publications.yaml'), 'r', encoding='utf-8') as file:
         return render_template('pages/publications.html', data = yaml.safe_load(file)) 
 
-@app.route('/<page_name>')
+@app.route('/<page_name>.html')
 def render_page(page_name):
     page_path = os.path.join(PAGES_DIR, f'{page_name}.html')
     if os.path.exists(page_path):
@@ -69,11 +69,11 @@ def render_page(page_name):
     else:
         return "Page not found", 404
     
-@app.route('/blogList')
+@app.route('/blogList.html')
 def blogList():
     return render_template('pages/blogList.html', blogPosts=list_all_blog_info())
     
-@app.route('/blog/<page_name>')
+@app.route('/blog/<page_name>.html')
 def render_blog_page(page_name):
     path = os.path.join(BLOG_DIR, page_name + ".md")
 
