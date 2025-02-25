@@ -121,7 +121,7 @@ Here are some examples of prompts I used:
 
 Somehow, it's a hit and miss with generating text with Midjourney. I got decent results after repeating the text several times and using prompts that included the words "title, label, text, letters, written, named, etc". and all sort of variations for text. You get the gist. However, I needed the least amount of attempts to get the text right when it was either very short or when I used the [Vary Region Option](https://docs.midjourney.com/docs/vary-region).
 
-![Text in MJ](/assets/img/chanel_wrong_text.png){: .mx-auto.d-block :}
+![Text in MJ](img/chanel_wrong_text.png)
 *Spelling is hard for everyone, especially French words. Prompt: "Commercial product photography, a bottle of Chanel perfume,background with wooden panels and orchids"*
 
 ## Limitations of Midjourney
