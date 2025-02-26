@@ -16,11 +16,13 @@
                             <h4 class="subtitle is-6">{{ pub.authors }}</h4>
                             <div class="block">
                                 {{ pub.summary | truncate(400, True, '...') }}
-                                <br />
-                                <a href="{{ pub.link }}">Read more</a>
                             </div>
                         </div>
+                        <div class="card-footer">
+                            <a href="{{ pub.link }}" class="card-footer-item">Read more</a>
+                        </div>
                     </div>
+
                 </div>
                 {% endfor %}
             </div>
