@@ -17,7 +17,7 @@
                 <div class="card-content">
                     <div class="content">
                         <div class="block">
-                            {{ blogPost.content | striptags | truncate(200, True, '...') }}
+                            {{ blogPost.content | striptags | truncate(190, True, '...') }}
                             <a href="{{ url_for('render_blog_page', page_name=blogPost.filename) }}">Read More</a>
                         </div>
 
