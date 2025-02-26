@@ -2,22 +2,34 @@
 
 {% block main %}
 
-<section class="hero is-medium" style="background-image: url('{{ url_for('static', filename=coverImg) }}'); background-size: cover; background-position: center; background-repeat: no-repeat;">
-  <div class="hero-body">
-    <div class="container">
-        <h1 class="title has-text-shadow has-text-white">{{ title }}</h1>
-        <h2 class="subtitle has-text-shadow has-text-white">{{ subtitle }}</h2>
-        <p class="has-text-shadow has-text-white">Posted on {{ date | format_date }}</p>
+<section class="hero is-medium"
+    style="background-image: url('{{ url_for('static', filename=coverImg) }}'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+    <div class="hero-body">
+        <div class="container">
+        <div class="block">
+                    <h1 class="title has-text-shadow has-text-white">{{ title }}</h1>
+            <h2 class="subtitle has-text-shadow has-text-white">{{ subtitle }}</h2>
+            <p class="has-text-shadow has-text-white">Posted on {{ date | format_date }}</p>
+        </div>
+
+
+            <div class="block" <div class="tags">
+                {% for tag in tags %}
+                <span class="tag">{{ tag }}</span>
+                {% endfor %}
+            </div>
+        </div>
+
     </div>
-  </div>
+    </div>
 </section>
 
 <section class="section">
     <div class="container">
-        <div class="blog-post">                
+        <div class="blog-post">
             </h2>
             <p class="date">
-                
+
             </p>
             <div class="content">
                 {{ content | safe }}

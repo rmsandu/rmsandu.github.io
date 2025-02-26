@@ -45,6 +45,10 @@ def list_all_blog_info():
     blog_posts.sort(key=lambda x: x['date'], reverse=True)
     return blog_posts
 
+def filter_blog_posts_by_tag(tag):
+    all_blog_posts = list_all_blog_info()
+    return [post for post in all_blog_posts if tag in post['tags']]
+
 # Custom filter to format the date
 @app.template_filter('format_date')
 def format_date(value, format='%B %d, %Y'):
@@ -72,6 +76,11 @@ def render_page(page_name):
 @app.route('/blogList.html')
 def blogList():
     return render_template('pages/blogList.html', blogPosts=list_all_blog_info())
+
+@app.route('/search/blogList/<tag>.html')
+def search_tag(tag):
+    filtered_blog_posts = filter_blog_posts_by_tag(tag)
+    return render_template('pages/blogList.html', blogPosts=filtered_blog_posts, selectedTag=tag)
     
 @app.route('/blog/<page_name>.html')
 def render_blog_page(page_name):

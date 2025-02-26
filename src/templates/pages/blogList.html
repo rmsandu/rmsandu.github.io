@@ -4,6 +4,13 @@
 <section class="section">
     <div class="container">
         <h1 class="title">Blog</h1>
+        {% if selectedTag != null %}
+        <h2 class="subtitle">filtered by tag {{ selectedTag }}</h2>
+
+        <div class="block">
+            <a href="{{ url_for('blogList') }}">Show all blog posts</a>
+        </div>
+        {% endif %}
         {% include 'partials/_blogList.jinja' %}
     </div>
 </section>

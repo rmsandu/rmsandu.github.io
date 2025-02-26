@@ -23,9 +23,14 @@
 
                         <div class="block blog-card-tag-height">
                             {% if blogPost.tags %}
+                            <div class="tags">
+
                             {% for tag in blogPost.tags %}
-                            <span class="tag">{{ tag }}</span>
+                            <a href="{{ url_for('search_tag', tag=tag) }}">
+                                <span class="tag is-hoverable {{ 'is-primary' if selectedTag == tag else '' }}">{{ tag }}</span>
+                            </a>
                             {% endfor %}
+                            </div>
                             {% endif %}
                         </div>
 
