@@ -50,7 +50,6 @@
 
 #portrait {
     max-width: 300px;
-    max-width: 300px;
 }
 
 .hero-background {
@@ -67,4 +66,8 @@
     padding: 20px;
     border-radius: 10px;
     display: inline-block;
+}
+
+.has-text-shadow {
+    text-shadow: 2px 2px 8px #000;
 }

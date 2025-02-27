@@ -8,7 +8,7 @@
                     <div class="card-content blog-card-header-height"
                         style="background-image: url('{{ url_for('static', filename=blogPost.coverImg) }}'); background-size: cover; background-position: center; background-repeat: no-repeat;">
 
-                        <h2 class="title  is-4 as-text-shadow has-text-white">{{ blogPost.title | striptags }}</h2>
+                        <h2 class="title is-spaced is-4 has-text-shadow has-text-white">{{ blogPost.title | striptags }}</h2>
                         <h2 class="subtitle is-6 has-text-shadow has-text-white">{{ blogPost.subtitle | striptags }} {{
                             blogPost.date |format_date }}</h2>
                         <p class="has-text-shadow has-text-white">Posted on {{ blogPost.date | format_date }}</p>

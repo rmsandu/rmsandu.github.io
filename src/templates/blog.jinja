@@ -6,18 +6,22 @@
     style="background-image: url('{{ url_for('static', filename=coverImg) }}'); background-size: cover; background-position: center; background-repeat: no-repeat;">
     <div class="hero-body">
         <div class="container">
-        <div class="block">
-                    <h1 class="title has-text-shadow has-text-white">{{ title }}</h1>
-            <h2 class="subtitle has-text-shadow has-text-white">{{ subtitle }}</h2>
-            <p class="has-text-shadow has-text-white">Posted on {{ date | format_date }}</p>
-        </div>
+            <div class="block">
+                <h1 class="title has-text-shadow has-text-white">{{ title }}</h1>
+                <h2 class="subtitle has-text-shadow has-text-white">{{ subtitle }}</h2>
+                <p class="has-text-shadow has-text-white">Posted on {{ date | format_date }}</p>
+            </div>
 
+            {% if tags %}
+            <div class="tags">
 
-            <div class="block" <div class="tags">
                 {% for tag in tags %}
-                <span class="tag">{{ tag }}</span>
+                <a href="{{ url_for('search_tag', tag=tag) }}">
+                    <span class="tag is-hoverable {{ 'is-primary' if selectedTag == tag else '' }}">{{ tag }}</span>
+                </a>
                 {% endfor %}
             </div>
+            {% endif %}
         </div>
 
     </div>
