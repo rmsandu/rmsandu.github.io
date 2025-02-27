@@ -24,7 +24,7 @@ def get_blog_info(file):
     coverImg = md_data.get('cover-img', '')
     thumbnailImg = md_data.get('thumbnail-img', '')
     tags = md_data.get('tags', '')
-    content = markdown.markdown(md_data.content, extensions=[BulmaImageExtension()])
+    content = markdown.markdown(md_data.content, extensions=[BulmaImageExtension(), 'fenced_code', 'codehilite'])
     filename = os.path.splitext(os.path.basename(file))[0]
 
     # Convert date string to datetime object

@@ -63,60 +63,62 @@ HuggingFace has already a great notebook example [here](https://colab.research.g
 
 **Without prior-preservation**
 
+```
+!accelerate launch train_dreambooth_lora_sdxl.py \
+  --pretrained_model_name_or_path="stabilityai/stable-diffusion-xl-base-1.0" \
+  --pretrained_vae_model_name_or_path="madebyollin/sdxl-vae-fp16-fix" \
+  --instance_data_dir="$source_data_dir" \
+  --output_dir="$output_dir" \
+  --instance_prompt="$instance_prompt" \
+  --resolution=1024 \
+  --train_batch_size=1 \
+  --gradient_checkpointing \
+  --gradient_accumulation_steps=4 \
+  --snr_gamma=5.0 \
+  --checkpointing_steps=100 \
+  --learning_rate=1e-4 \
+  --lr_scheduler="constant" \
+  --lr_warmup_steps=0 \
+  --max_train_steps=500 \
+  --validation_prompt="$validation_prompt" \
+  --validation_epochs=25 \
+  --report_to="wandb" \
+  --mixed_precision="fp16" \
+  --use_8bit_adam \
+  --seed="0"
+```
 
-    !accelerate launch train_dreambooth_lora_sdxl.py \
+
+**With prior-preservation**
+```
+!accelerate launch train_dreambooth_lora_sdxl.py \
     --pretrained_model_name_or_path="stabilityai/stable-diffusion-xl-base-1.0" \
     --pretrained_vae_model_name_or_path="madebyollin/sdxl-vae-fp16-fix" \
     --instance_data_dir="$source_data_dir" \
     --output_dir="$output_dir" \
     --instance_prompt="$instance_prompt" \
-    --resolution=1024 \
+    --with_prior_preservation \
+    --class_data_dir="$class_dir" \
+    --prior_loss_weight=1.0 \
+    --class_prompt="photo of cat" \
+    --num_class_images=100 \
+    --max_train_steps=1000 \
+    --resolution=1024\
     --train_batch_size=1 \
     --gradient_checkpointing \
-    --gradient_accumulation_steps=4 \
+    --gradient_accumulation_steps=2\
     --snr_gamma=5.0 \
     --checkpointing_steps=100 \
     --learning_rate=1e-4 \
     --lr_scheduler="constant" \
     --lr_warmup_steps=0 \
-    --max_train_steps=500 \
     --validation_prompt="$validation_prompt" \
     --validation_epochs=25 \
     --report_to="wandb" \
     --mixed_precision="fp16" \
     --use_8bit_adam \
     --seed="0"
-
-
-**With prior-preservation**
-
-    !accelerate launch train_dreambooth_lora_sdxl.py \
-      --pretrained_model_name_or_path="stabilityai/stable-diffusion-xl-base-1.0" \
-      --pretrained_vae_model_name_or_path="madebyollin/sdxl-vae-fp16-fix" \
-      --instance_data_dir="$source_data_dir" \
-      --output_dir="$output_dir" \
-      --instance_prompt="$instance_prompt" \
-      --with_prior_preservation \
-      --class_data_dir="$class_dir" \
-      --prior_loss_weight=1.0 \
-      --class_prompt="photo of cat" \
-      --num_class_images=100 \
-       --max_train_steps=1000 \
-      --resolution=1024\
-      --train_batch_size=1 \
-      --gradient_checkpointing \
-      --gradient_accumulation_steps=2\
-      --snr_gamma=5.0 \
-      --checkpointing_steps=100 \
-      --learning_rate=1e-4 \
-      --lr_scheduler="constant" \
-      --lr_warmup_steps=0 \
-      --validation_prompt="$validation_prompt" \
-      --validation_epochs=25 \
-      --report_to="wandb" \
-      --mixed_precision="fp16" \
-      --use_8bit_adam \
-      --seed="0"
+```
 
 
 ## Results
