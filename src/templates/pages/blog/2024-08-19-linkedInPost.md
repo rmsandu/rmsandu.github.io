@@ -1,7 +1,7 @@
 ---
 date: 2024-08-19
 title: "Generative AI in Marketing and Design: Opportunities & Challenges"
-subtitle: The Subtitle
+subtitle: ""
 cover-img: img/linkedin/1724070560862.jpeg
 thumbnail-img: img/image.png
 tags: [tag1, tag2, tag3]
