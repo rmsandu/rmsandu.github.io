@@ -7,7 +7,7 @@ thumbnail-img: img/image.png
 tags: [GenAI, Midjourney, Adobe Firefly, Flux, Stable Diffusion]
 ---
 
-> This post has been generated as part of my work at Accenture and can be found on LinkedIn as well. This blog post represents my personal views and subjective experience with these tools. I am sure that since writing this back in August 2024 these tools have evolved a lot and made great strides in precise and accurate image generation, so some of their capabilities might NOT reflect the most current status.
+> This post has been written as part of my work at Accenture and can be found on LinkedIn as well. This blog post represents my personal views and subjective experience with these tools. I am sure that since writing this back in August 2024 these tools have evolved a lot and made great strides in precise and accurate image generation, so some of their capabilities might NOT reflect the most current status.
 
 In recent years, the marketing and design landscape has been dramatically transformed by the advent of generative AI tools. These sophisticated algorithms promise to revolutionize how we create visual content for marketing and design, offering unprecedented speed and seemingly limitless creative possibilities. In this article I will explore a few of the most famous tools on the market (Midjourney, Adobe Firefly, Stable Diffusion) and report on my experience.
 
