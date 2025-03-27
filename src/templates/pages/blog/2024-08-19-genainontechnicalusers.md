@@ -61,7 +61,7 @@ Midjourney offers advanced features like "--sref" (style reference) and "--cref"
 
 ![](img/linkedin/1724075871277.png)
 
-*An example of a photo created with Midjourney using as style reference the Accenture cover photo from this article. Prompt: “a photo of an office worker with ski googles seating outside at a wooden table at an alpine traditional restaurant, while coding at a laptop. alpine mountain peaks covered in snow in the background. The sky has some white clouds with purple outlines showcasing the upcoming sunset --sref*
+*An example of a photo created with Midjourney using a style reference. Prompt: “a photo of an office worker with ski googles seating outside at a wooden table at an alpine traditional restaurant, while coding at a laptop. alpine mountain peaks covered in snow in the background. The sky has some white clouds with purple outlines showcasing the upcoming sunset --sref*
 
 ### Limitations of Midjourney:
 
@@ -71,20 +71,12 @@ Another limitation is the lack of precise control over image composition. Users 
 
   
 
-![](img/linkedin/1724071565599.png)
-
-*In 2 out of 4 images Accenture is spelled incorrectly. Prompt: “a futuristic office campus, a mix of nature and environmentally friendly buildings. the buildings have purple windows and lights. robots and flying drones are spotted on a flying aerodrome. "accenture" company logo written big at the top of the photo with a transparent purple font that looks made of clouds --v 6.1”*
 
 ## Adobe Firefly - Pioneering Ethical AI in Creative Design
 
 Adobe Firefly stands out in the generative AI landscape with its unique approach to ethics and integration within the Adobe ecosystem. This tool is not just another image generator; it's a family of creative generative AI models designed specifically for Adobe products, with a strong focus on ethical AI practices and copyright considerations. Adobe Firefly can be tried out by anyone for free with the basic account which offers 25 generative credits per month.
 
   
-
-![](img/linkedin/1724072364063.png)
-
-*Prompt: “high resolution up-close photo portrait of a young woman who wears smart glasses, "accenture" logo text written at the bottom”. The text and shape were not added in the first-generation process, but I was able to add it afterwards with the editing tools which gave me a lot of freedom. This font does not represent the Accenture brand, it is just an illustration of Adobe’s extensive editing options with fonts and shapes.*
- 
 **Ethical AI and Copyright Compliance:**
 
 One of Firefly's most significant advantages is its commitment to ethical AI use. Adobe has trained Firefly on a carefully curated dataset that includes Adobe Stock imagery (used in accordance with the Stock Contributor License agreement), openly licensed content and public domain content with expired copyrights. This approach aims to create a tool that is commercially safe for both individuals and enterprise creative teams. By avoiding the use of copyrighted material in its training data, Adobe seeks to minimize the risk of copyright infringement in Firefly-generated content. This is a crucial consideration for businesses and professionals who need to ensure their creative outputs are legally compliant.
@@ -102,7 +94,6 @@ This workflow integration sets Firefly apart from other platforms like Midjourne
 
   
 
-![](img/linkedin/1724071993383.png)
 
 Adobe Firefly gives the user much more control over editing their generated photos, especially when adding text to it or creating materials with text for social media websites.
 
@@ -115,11 +106,7 @@ Adobe Firefly gives the user much more control over editing their generated phot
 
 In my opinion, while Adobe Firefly has significant strengths, particularly in terms of commercial usage and integration with Adobe's ecosystem, it currently lags behind Midjourney in some aspects of image quality and artistic creativity. However, Firefly's potential for seamless workflow integration with the Adobe suite makes it a promising tool for users already familiar with Adobe. Last, but not least, Adobe text and image editing options like generative erase and fill are already significantly easier to use and apply especially when it comes to create social media & marketing posts, flyers, presentations, or videos for a specific brand. Ultimately, the choice between Midjourney and Adobe may depend on the user's specific needs: commercial safety and workflow editing integration (Adobe Firefly) versus artistic quality and realistic photography (Midjourney).
 
-  
-
-![](img/linkedin/1724072138529.png)
-
-*Same prompt as for Midjourney. Text was manually added after the image has been generated. This font does not represent the Accenture brand, it is just an illustration of Adobe’s extensive editing options.*
+ ![](img/linkedin/1724071993383.png)
 
 ## Stable Diffusion Models - Open-Source Power with Customization Potential
 
@@ -156,9 +143,7 @@ The field of open-source AI image generation is brimming with exciting developme
 
   
 
-![](img/linkedin/1724073567469.png)
 
-*Image generated with the newest model from Flux, prompt "a close-up photo of a hand holding a keychain with a mini-robot and a laptop. the laptop has a purple sticker with the text "accenture" written on it."*
 
 ## Resources:
 
