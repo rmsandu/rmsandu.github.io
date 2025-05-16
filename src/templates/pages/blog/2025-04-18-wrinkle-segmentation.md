@@ -13,8 +13,8 @@ tags: [segmentation, machine learning, ai, deep learning, Unet]
 - [What are fine facial wrinkles and why are these so hard to classify?](#background)
 - [Model architecture](#model-architecture)
 - [Dataset Preparation and Augmentation](#dataset-preparation)
-- [Evaluating an imbalanced dataset - tips & tricks](#implementation-challenges)
-- [Results and Outlook](#results-and-evaluation)
+- [Results and Evaluation](#results-and-evaluation)
+- [Conclusion and Outlook](#conclusion)
 - [Demo](#demo)
 
 <a id="introduction"></a>
@@ -115,6 +115,8 @@ Here is the workflow for the face pre-processing:
 </figure>
 <figcaption>Face Pre-Processing Workflow</figcaption>
 
+<a id="results-and-evaluation"></a>
+
 ## Results and evaluation
 
 ### Dealing with class imbalance
@@ -127,6 +129,8 @@ The extreme class imbalance (skin pixels vastly outnumber wrinkle pixels) was th
 However, one has to pay attention to choosing the optimal parameters for these losses. Focal loss can blow up if nearly all pixels are negative (or if your model saturates its outputs to 0 or 1 early on). Even with your small alpha=0.75, if the model sees almost no positive pixels in a batch, the log(1 - p) or log(p) can get extreme, producing Infs / NaNs in half‐precision.
 
 In practice, the **Combined loss = Dice + Focal** pushed the model to pay attention to wrinkles without totally neglecting the overall structure. During training, I monitored these losses separately. Typically, Dice loss would start high (since overlap was initially poor) and improve, while focal loss would ensure the model didn’t just predict all zeros.
+
+### Evaluation Metrics
 
 **Hyperparameters**
 All the hyperparameters can be set in **`config.yaml`** file to set the desired training parameters. [Weights&Biases](https://wandb.ai/site) is used for tracking.
@@ -165,6 +169,9 @@ The evaluation code computes not only IoU but also precision, recall, F1, and AU
 </figure>
 <figcaption>Weights&Biases evaluation plots, total loss, precision</figcaption>
 <p></p>
+
+### Results
+
 In practice, my model’s IoU on the validation set ended up in the mid 0.3s (around 0.34), and the Dice/F1 around 0.60. This is in the same ballpark as the numbers reported by Kim et al. (2024) for their UNet++ (they achieved IoU ≈ 0.45 and F1 ≈ 0.616). Considering I did not use the 50k extra images or the fancy multi-channel input that Moon et al. used, I’m quite happy that a straightforward U-Net model can get that close to state-of-the-art. It validates that the architectural choices (ResNet50 backbone, attention, loss functions) were on point. To get a better sense of model behavior, I also looked at the precision-recall curve. It showed that if I tuned the probability threshold a bit lower than 0.5, I could catch more wrinkles (improve recall) without tanking precision too much – which would boost the F1 a bit more. This is a common scenario in medical-like segmentation: you might prefer to err on the side of marking a wrinkle that isn’t there (false positive) rather than missing a real wrinkle (false negative), depending on the application. By examining precision and recall, I could decide how to balance the model if, say, a dermatologist user said “I want to see all possible wrinkles, even if a few turns out to be skin lines.” The AUC seems inflated possibly showing that I am over-fitting, but that’s typical for highly imbalanced segmentation task.
 
 <div class="grid is-col-min-7">
@@ -195,7 +202,9 @@ In practice, my model’s IoU on the validation set ended up in the mid 0.3s (ar
 | Data Used         | ~2K manually labeled faces | ~1K manually labeled images | 50K weak + 1K manual                   |
 | Architecture      | U-Net + ResNet50           | UNet++ & ResNeXt-50         | U-Net / Swin UNETR + Texture map input |
 
-### Outlook & Conclusion
+<a id="conclusion"></a>
+
+## Outlook & Conclusion
 
 **Class balancing and patching**: Next I will consider approaches like oversampling wrinkle regions or training in patches focusing on areas likely to have wrinkles (like around eyes, forehead, mouth.). One idea is to sample patches of the image during training that contain at least one wrinkle, to avoid too many all-background patches. A patch-based refinement (zooming into high-importance areas) is something else that I marked as a potential future improvement.
 
@@ -209,7 +218,7 @@ Wrinkle segmentation is hard. It taught me to pay attention (literally, via atte
 
 ## Demo
 
-What’s a project without a cool demo? There is an interactive demo where you can upload a face photo (or use one from FFHQ) and see the model highlight the wrinkles. It’s both fascinating and a bit frightening. I used Gradio and the code can be run from `app.py`.
+What’s a project without a cool demo? There is an interactive demo where you can upload a face photo (or use one from FFHQ) and see the model highlight the wrinkles. It’s both fascinating and a bit frightening. I used Gradio and the code can be run from `app.py`. Alternatively, I quickly pulled together this [Colab Notebook](https://colab.research.google.com/drive/1jUC-bvvxG0nGmb5tz_v3xgiDNmRffU4i?usp=sharing) (that might not work because I continuously tweak it).
 
 <figure class="image">
     <img src="/static/img/demo_screenshot.png" />
