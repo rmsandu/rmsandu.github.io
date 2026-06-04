@@ -4,6 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{% block meta_description %}Raluca-Maria Sandu is an AI/ML engineer and researcher based in Zurich, Switzerland.{% endblock %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/codehilite.css') }}">
@@ -11,42 +15,37 @@
 </head>
 
 <body>
-    <nav class="navbar" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand">
-            <a class="navbar-item" href="{{ url_for('index') }}">
-                <button class="button is-primary">Raluca-Maria Sandu</button>
-            </a>
+    <a class="skip-link" href="#main-content">Skip to content</a>
 
-            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
+    {% block site_header %}
+    <header class="site-header">
+        <nav class="site-nav" aria-label="main navigation">
+            <a class="site-brand" href="{{ url_for('index') }}">Raluca-Maria Sandu</a>
+
+            <button class="navbar-burger site-menu-button" type="button" aria-label="menu" aria-expanded="false"
                 data-target="navbarBasicExample">
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
-            </a>
-        </div>
+            </button>
 
-        <div id="navbarBasicExample" class="navbar-menu">
-            <div class="navbar-start">
-                <a class="navbar-item" href="{{ url_for('blogList') }}">Blog</a>
-                <a class="navbar-item" href="{{ url_for('render_page', page_name='publications') }}">Publications</a>
-                <a class="navbar-item" href="{{ url_for('render_page', page_name='resume') }}">Resume</a>
+            <div id="navbarBasicExample" class="site-nav-links navbar-menu">
+                <a href="{{ url_for('blogList') }}">Blog</a>
+                <a href="{{ url_for('publications') }}">Publications</a>
+                <a href="{{ url_for('render_page', page_name='resume') }}">Resume</a>
             </div>
-        </div>
-        </div>
-    </nav>
+        </nav>
+    </header>
+    {% endblock %}
 
-    <main>
+    <main id="main-content">
         {% block main %}
-        <!-- Main content will be injected here -->
         {% endblock %}
     </main>
 
-
-
-
-    <footer class="footer">
-    {% include 'partials/_footer.jinja' %}
+    <footer class="footer site-footer">
+        {% include 'partials/_footer.jinja' %}
     </footer>
 
     <script src="{{ url_for('static', filename='js/bulma.js') }}"></script>

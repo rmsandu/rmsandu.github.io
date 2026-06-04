@@ -1,10 +1,12 @@
-from flask import Flask, render_template, request, url_for
 import os
+from datetime import date, datetime
+
+from flask import Flask, render_template
 import markdown
 import frontmatter
-from datetime import datetime
-from src.markdown_extensions import BulmaImageExtension
 import yaml
+
+from src.markdown_extensions import BulmaImageExtension
 
 app = Flask(__name__)
 
@@ -13,10 +15,38 @@ BLOG_DIR = os.path.join(os.path.dirname(__file__), "templates/pages/blog")
 DATA_DIR = os.path.join(os.path.dirname(__file__), "data")
 
 
+def load_yaml_data(filename):
+    path = os.path.join(DATA_DIR, filename)
+    with open(path, "r", encoding="utf-8") as file:
+        data = yaml.safe_load(file)
+    return data or {}
+
+
 def list_blog_files():
-    return [
+    return sorted(
         os.path.join(BLOG_DIR, f) for f in os.listdir(BLOG_DIR) if f.endswith(".md")
-    ]
+    )
+
+
+def normalize_tags(tags):
+    if tags is None:
+        return []
+    if isinstance(tags, str):
+        return [tag.strip() for tag in tags.split(",") if tag.strip()]
+    return list(tags)
+
+
+def normalize_date(value):
+    if isinstance(value, datetime):
+        return value.date()
+    if isinstance(value, date):
+        return value
+    if isinstance(value, str):
+        try:
+            return datetime.strptime(value, "%Y-%m-%d").date()
+        except ValueError:
+            return None
+    return None
 
 
 def get_blog_info(file):
@@ -27,23 +57,18 @@ def get_blog_info(file):
     subtitle = md_data.get("subtitle", "No Subtitle")
     coverImg = md_data.get("cover-img", "")
     thumbnailImg = md_data.get("thumbnail-img", "")
-    tags = md_data.get("tags", "")
+    tags = normalize_tags(md_data.get("tags", []))
     content = markdown.markdown(
         md_data.content,
         extensions=[BulmaImageExtension(), "fenced_code", "codehilite", "tables"],
     )
     filename = os.path.splitext(os.path.basename(file))[0]
-
-    # Convert date string to datetime object
-    try:
-        date = md_data.get("date", "No Date")
-    except ValueError:
-        date = None
+    post_date = normalize_date(md_data.get("date"))
 
     return {
         "title": title,
         "subtitle": subtitle,
-        "date": date,
+        "date": post_date,
         "content": content,
         "coverImg": coverImg,
         "thumbnailImg": thumbnailImg,
@@ -53,12 +78,8 @@ def get_blog_info(file):
 
 
 def list_all_blog_info():
-    blog_posts = []
-
-    for file in list_blog_files():
-        blog_posts.append(get_blog_info(file))
-
-    blog_posts.sort(key=lambda x: x["date"], reverse=True)
+    blog_posts = [get_blog_info(file) for file in list_blog_files()]
+    blog_posts.sort(key=lambda x: x["date"] or date.min, reverse=True)
     return blog_posts
 
 
@@ -75,17 +96,23 @@ def format_date(value, format="%B %d, %Y"):
     return value.strftime(format)
 
 
+@app.context_processor
+def inject_globals():
+    return {"current_year": datetime.now().year}
+
+
 @app.route("/")
 def index():
-    return render_template("pages/home.html", blogPosts=list_all_blog_info())
+    return render_template(
+        "pages/home.html",
+        home=load_yaml_data("home.yaml"),
+        blogPosts=list_all_blog_info(),
+    )
 
 
 @app.route("/publications.html")
 def publications():
-    with open(
-        os.path.join(DATA_DIR, "publications.yaml"), "r", encoding="utf-8"
-    ) as file:
-        return render_template("pages/publications.html", data=yaml.safe_load(file))
+    return render_template("pages/publications.html", data=load_yaml_data("publications.yaml"))
 
 
 @app.route("/<page_name>.html")

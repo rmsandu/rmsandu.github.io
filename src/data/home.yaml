@@ -1,0 +1,114 @@
+profile:
+  name: "Raluca-Maria Sandu"
+  role: "AI/ML engineer and researcher"
+  location: "Zurich, Switzerland"
+  summary:
+    - text: "I am an applied AI/ML engineer with around 20 years of coding experience and a PhD in Biomedical Engineering. My industry work has mostly focused on visual AI, building systems that classify, understand, generate and reason about images, video, and the physical world. During my PhD, I worked on medical imaging research for liver cancer, which led to journal publications and contributions to a "
+    - text: "commercial product deployed in hospitals."
+      url: "https://www.cascination.com/en/ablasure"
+    - text: " My current technical curiosity is physical AI: how machines can understand, navigate, and interact with our messy, beautiful 3D world. That interest also connects deeply with my life outside work. I am happiest outdoors — surfing, skiing, snowboarding, gardening, and "
+    - text: "birdwatching"
+      url: "https://ebird.org/profile/NTI4NTk0OQ/world"
+    - text: " — and I am currently taking ornithology classes. For me, AI is most exciting when it helps us perceive, understand, and protect the real world around us."
+  personal: ""
+  email: "rmsan@duck.com"
+  github: "https://github.com/rmsandu"
+  linkedin: "https://linkedin.com/in/rmsandu"
+  scholar: "https://scholar.google.com/citations?user=5qskcz0AAAAJ"
+  cv: "/static/Raluca_Sandu_CV.pdf"
+  portrait: "img/portrait_scaled.jpg"
+
+credibility:
+  - "PhD Biomedical Engineering"
+  - "Computer Vision"
+  - "Medical Imaging"
+  - "Generative AI"
+  - "PyTorch"
+  - "AWS"
+
+projects:
+  - title: "Wrinkle segmentation with U-Net"
+    problem: "Fine facial wrinkles are tiny, ambiguous structures with scarce labels and extreme class imbalance."
+    built: "Built and evaluated a deep learning segmentation pipeline with U-Net-style architectures, face preprocessing, and mask quality analysis."
+    stack: ["Python", "PyTorch", "U-Net", "Computer Vision"]
+    link: "/blog/2025-04-18-wrinkle-segmentation.html"
+    image: "img/young-old-wrinkles.png"
+    accent: "coral"
+
+  - title: "Stable Diffusion XL fine-tuning"
+    problem: "Fine-tuning image generation models on small personal datasets requires careful choices around LoRA, prompts, and training steps."
+    built: "Documented an SDXL LoRA workflow with Colab, validation images, prompt experiments, and practical lessons from a constrained setup."
+    stack: ["Diffusers", "SDXL", "LoRA", "Colab"]
+    link: "/blog/2024-06-15-sdxlfinetuning.html"
+    image: "img/Thor_Hawaii_cover.jpg"
+    accent: "yellow"
+
+  - title: "GenAI tools for non-technical users"
+    problem: "Marketing and design teams need a grounded view of what image generation tools can and cannot do."
+    built: "Compared Midjourney, Adobe Firefly, Stable Diffusion, and related tools through practical use cases, limitations, and workflow observations."
+    stack: ["GenAI", "Image Tools", "Design Workflows"]
+    link: "/blog/2024-08-19-genainontechnicalusers.html"
+    image: "img/nico_mur.jpg"
+    accent: "orange"
+
+  - title: "Medical imaging for ablation assessment"
+    problem: "Liver tumor ablation outcomes need objective volumetric assessment beyond subjective 2D inspection."
+    built: "Developed image-based evaluation methods during PhD research, later connected to commercial medical device workflows."
+    stack: ["Medical Imaging", "Python", "Research", "Clinical Data"]
+    link: "/publications.html"
+    image: "img/workflow-unet.png"
+    accent: "green"
+
+  - title: "Distilled Stable Diffusion with Gradio"
+    problem: "Diffusion demos should be approachable without hiding the model and deployment trade-offs."
+    built: "Created a Colab and Gradio walkthrough for distilled Stable Diffusion, including interface theming and practical inference notes."
+    stack: ["Stable Diffusion", "Gradio", "Colab", "Python"]
+    link: "/blog/2023-11-04-ssdgradio1.html"
+    image: "img/transfagarasan_dalle.png"
+    accent: "coral"
+
+  - title: "Midjourney photography experiments"
+    problem: "Realistic AI photography depends on prompt control, camera language, lighting, and composition."
+    built: "Collected prompt strategies and visual examples for realistic photo generation with Midjourney."
+    stack: ["Midjourney", "Prompting", "Photography"]
+    link: "/blog/2024-04-04-midjourney.html"
+    image: "img/cover_mj_post_youaremystar.png"
+    accent: "yellow"
+
+timeline:
+  - date: "2025"
+    type: "work"
+    title: "Vision AI Engineer | Stealth startup"
+    summary: "Building applied vision AI systems in a startup environment."
+
+  - date: "2022-2025"
+    type: "work"
+    title: "Machine Learning Team Lead | Accenture"
+    summary: "Led machine learning and generative AI work across applied research, engineering, and client-facing delivery."
+
+  - date: "2021-2022"
+    type: "work"
+    title: "CSL Behring | Analytics for pharmaceutical manufacturing"
+    summary: "Built repeatable data quality and analytics pipelines for manufacturing processes at CSL Behring."
+
+  - date: "2015-2016"
+    type: "work"
+    title: "Graduate thesis project | Philips Research"
+    summary: "Worked on applied computer vision research in an industrial research setting."
+
+  - date: "2014-2017"
+    type: "education"
+    title: "MSc Biomedical Engineering | RWTH Aachen"
+    summary: "Completed graduate studies in biomedical engineering with a focus on imaging, analysis, and computational methods."
+
+  - date: "2014"
+    type: "education"
+    title: "BSc graduate thesis | Philips Research"
+    summary: "Completed a graduate thesis project connected to applied research at Philips Research."
+
+  - date: "2010-2014"
+    type: "education"
+    title: "BSc Applied Computer Science and System Engineering"
+    summary: "Completed undergraduate studies in applied computer science and system engineering."
+
+writing_intro: "Notes from practical AI work, research experiments, image generation, and the messy edges where models meet real users."
