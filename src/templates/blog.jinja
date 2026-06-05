@@ -1,45 +1,39 @@
 {% extends "base.jinja" %}
 
-{% block main %}
+{% block page_title %}{{ title }} | Raluca-Maria Sandu{% endblock %}
 
-<section class="hero is-medium"
-    style="background-image: url('{{ url_for('static', filename=coverImg) }}'); background-size: cover; background-position: center; background-repeat: no-repeat;">
-    <div class="hero-body">
-        <div class="container">
-            <div class="block">
-                <h1 class="title has-text-shadow has-text-white">{{ title }}</h1>
-                <h2 class="subtitle has-text-shadow has-text-white">{{ subtitle }}</h2>
-                <p class="has-text-shadow has-text-white">Posted on {{ date | format_date }}</p>
-            </div>
+{% block main %}
+<article class="blog-post-page">
+    <header class="blog-post-header">
+        <div class="container blog-container">
+            <p class="post-date">{{ date | format_date }}</p>
+            <h1>{{ title }}</h1>
+            <p class="blog-subtitle">{{ subtitle }}</p>
 
             {% if tags %}
-            <div class="tags">
-
+            <div class="tag-list" aria-label="tags">
                 {% for tag in tags %}
-                <a href="{{ url_for('search_tag', tag=tag) }}">
-                    <span class="tag is-hoverable {{ 'is-primary' if selectedTag == tag else '' }}">{{ tag }}</span>
-                </a>
+                <a class="tag-pill" href="{{ url_for('search_tag', tag=tag) }}">{{ tag }}</a>
                 {% endfor %}
             </div>
             {% endif %}
         </div>
+    </header>
 
+    {% if coverImg %}
+    <div class="container blog-container">
+        <figure class="blog-cover">
+            <img src="{{ url_for('static', filename=coverImg) }}" alt="">
+        </figure>
     </div>
-    </div>
-</section>
+    {% endif %}
 
-<section class="section">
-    <div class="container">
-        <div class="blog-post">
-            </h2>
-            <p class="date">
-
-            </p>
-            <div class="content">
+    <div class="section">
+        <div class="container blog-container">
+            <div class="content blog-content">
                 {{ content | safe }}
             </div>
         </div>
-
     </div>
-</section>
+</article>
 {% endblock %}

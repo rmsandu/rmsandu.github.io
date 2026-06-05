@@ -1,16 +1,25 @@
 {% extends "base.jinja" %}
 
-{% block main %}
-<section class="section">
-    <div class="container">
-        <h1 class="title">Blog</h1>
-        {% if selectedTag != null %}
-        <h2 class="subtitle">filtered by tag {{ selectedTag }}</h2>
+{% block page_title %}Blog | Raluca-Maria Sandu{% endblock %}
 
-        <div class="block">
-            <a href="{{ url_for('blogList') }}">Show all blog posts</a>
+{% block main %}
+<section class="section page-intro">
+    <div class="container">
+        <p class="eyebrow">Writing</p>
+        <h1>Blog</h1>
+        <p>Practical notes from AI work, image generation experiments, medical imaging, and machine learning projects.</p>
+
+        {% if selectedTag is defined and selectedTag %}
+        <div class="filter-note">
+            <span>Filtered by {{ selectedTag }}</span>
+            <a href="{{ url_for('blogList') }}">Show all posts</a>
         </div>
         {% endif %}
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
         {% include 'partials/_blogList.jinja' %}
     </div>
 </section>

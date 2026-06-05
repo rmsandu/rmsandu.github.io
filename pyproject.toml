@@ -1,0 +1,20 @@
+[project]
+name = "rmsandu-portfolio"
+version = "0.1.0"
+description = "Personal portfolio for Raluca-Maria Sandu"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "flask==3.1.0",
+    "frozen-flask==1.0.2",
+    "markdown==3.7",
+    "pygments==2.19.1",
+    "python-frontmatter==1.1.0",
+    "pyyaml==6.0.2",
+]
+
+[dependency-groups]
+dev = [
+    "pytest==8.3.5",
+]
+

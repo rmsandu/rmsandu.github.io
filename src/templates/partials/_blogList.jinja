@@ -1,42 +1,35 @@
-<div class="fixed-grid has-1-cols-mobile has-2-cols-tablet has-2-cols-desktop">
-    <div class="grid">
-        {% for blogPost in blogPosts %}
-        <div class="cell">
-            <div class="card">
-                <a href="{{ url_for('render_blog_page', page_name=blogPost.filename) }}">
+{% if blogPosts %}
+<div class="post-grid">
+    {% for blogPost in blogPosts %}
+    <article class="post-card">
+        <a class="post-card-image" href="{{ url_for('render_blog_page', page_name=blogPost.filename) }}" aria-label="Read {{ blogPost.title | striptags }}">
+            {% if blogPost.coverImg %}
+            <img src="{{ url_for('static', filename=blogPost.coverImg) }}" alt="">
+            {% else %}
+            <span>{{ blogPost.title | striptags }}</span>
+            {% endif %}
+        </a>
 
-                    <div class="card-content blog-card-header-height"
-                        style="background-image: url('{{ url_for('static', filename=blogPost.coverImg) }}'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+        <div class="post-card-body">
+            <p class="post-date">{{ blogPost.date | format_date }}</p>
+            <h2><a href="{{ url_for('render_blog_page', page_name=blogPost.filename) }}">{{ blogPost.title | striptags }}</a></h2>
+            <p class="post-subtitle">{{ blogPost.subtitle | striptags }}</p>
+            <p class="post-excerpt">{{ blogPost.content | striptags | truncate(180, True, '...') }}</p>
 
-                        <h2 class="title is-spaced is-4 has-text-shadow has-text-white">{{ blogPost.title | striptags }}</h2>
-                        <h2 class="subtitle is-6 has-text-shadow has-text-white">{{ blogPost.subtitle | striptags }}</h2>
-                        <p class="has-text-shadow has-text-white">Posted on {{ blogPost.date | format_date }}</p>
-                    </div>
-                </a>
-                <div class="card-content">
-                    <div class="content">
-                        <div class="block">
-                            {{ blogPost.content | striptags | truncate(190, True, '...') }}
-                            <a href="{{ url_for('render_blog_page', page_name=blogPost.filename) }}">Read More</a>
-                        </div>
-
-                        <div class="block blog-card-tag-height">
-                            {% if blogPost.tags %}
-                            <div class="tags">
-
-                            {% for tag in blogPost.tags %}
-                            <a href="{{ url_for('search_tag', tag=tag) }}">
-                                <span class="tag is-hoverable {{ 'is-primary' if selectedTag == tag else '' }}">{{ tag }}</span>
-                            </a>
-                            {% endfor %}
-                            </div>
-                            {% endif %}
-                        </div>
-
-                    </div>
-                </div>
+            {% if blogPost.tags %}
+            <div class="tag-list" aria-label="tags">
+                {% for tag in blogPost.tags %}
+                <a class="tag-pill {{ 'is-selected' if selectedTag == tag else '' }}" href="{{ url_for('search_tag', tag=tag) }}">{{ tag }}</a>
+                {% endfor %}
             </div>
+            {% endif %}
         </div>
-        {% endfor %}
-    </div>
+    </article>
+    {% endfor %}
 </div>
+{% else %}
+<div class="empty-state">
+    <p>No posts found for this tag.</p>
+    <a href="{{ url_for('blogList') }}">Show all blog posts</a>
+</div>
+{% endif %}

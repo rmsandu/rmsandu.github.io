@@ -1,32 +1,36 @@
 {% extends "base.jinja" %}
 
+{% block page_title %}Publications | Raluca-Maria Sandu{% endblock %}
+
 {% block main %}
-<section class="section">
+<section class="section page-intro">
     <div class="container">
+        <p class="eyebrow">Research</p>
+        <h1>Publications</h1>
+        <p>Peer-reviewed and conference work across medical imaging, ablation assessment, and biomedical engineering.</p>
+    </div>
+</section>
 
-        <h1 class="title">Publications</h1>
-
-        <div class="fixed-grid has-1-cols-mobile has-2-cols-tablet has-2-cols-desktop">
-            <div class="grid">
-                {% for pub in data.publications %}
-                <div class="cell">
-                    <div class="card">
-                        <div class="card-content publication-cards">
-                            <h3 class="title is-5">{{ pub.title }}</h3>
-                            <h4 class="subtitle is-6">{{ pub.authors }}</h4>
-                            <div class="block">
-                                {{ pub.summary | truncate(400, True, '...') }}
-                            </div>
-                        </div>
-                        <div class="card-footer">
-                            <a href="{{ pub.link }}" class="card-footer-item">Read more</a>
-                        </div>
-                    </div>
-
-                </div>
-                {% endfor %}
+<section class="section">
+    <div class="container publication-list">
+        {% for pub in data.publications %}
+        <article class="publication-item">
+            <div>
+                <p class="publication-meta">
+                    {% if pub.journal %}{{ pub.journal }}{% elif pub.conference %}{{ pub.conference }}{% elif pub.book %}{{ pub.book }}{% else %}Publication{% endif %}
+                    {% if pub.year %} &middot; {{ pub.year }}{% endif %}
+                </p>
+                <h2>{{ pub.title }}</h2>
+                <p class="publication-authors">{{ pub.authors }}</p>
+                {% if pub.summary %}
+                <p>{{ pub.summary | truncate(360, True, '...') }}</p>
+                {% endif %}
             </div>
-        </div>
+            {% if pub.link %}
+            <a class="text-link" href="{{ pub.link }}">Read more</a>
+            {% endif %}
+        </article>
+        {% endfor %}
     </div>
 </section>
 {% endblock %}
