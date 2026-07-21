@@ -8,7 +8,7 @@ timeline:
     type: "work"
     title: "Machine Learning Team Lead | Accenture"
     summary: "Led and implemented computer vision and generative AI solutions across 7+ projects, including industrial inspection, synthetic data, multimodal verification and 3D generation."
-    logo: "img/logos/Accenture_logo.png"
+    logo: "img/logos/accenture.png"
     logo_alt: "Accenture logo"
 
   - date: "2017-2022"
@@ -21,7 +21,7 @@ timeline:
   - date: "2016-2017"
     type: "work"
     title: "Master's Thesis Researcher | Philips Research"
-    summary: "Developed segmentation and machine-learning methods for the automated segmentation and classification of facial skin."
+    summary: "Developed segmentation and machine-learning methods for the automated segmentation and classification of skin images."
     logo: "img/logos/philips.jpeg"
     logo_alt: "Philips Research logo"
 

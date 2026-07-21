@@ -263,8 +263,7 @@ button:focus-visible {
     margin-bottom: 1.6rem;
 }
 
-.section-heading h2,
-.resume-section h2 {
+.section-heading h2 {
     color: var(--color-forest);
     font-family: var(--font-display);
     font-size: clamp(2rem, 5vw, 3.4rem);
@@ -291,16 +290,14 @@ button:focus-visible {
     padding-top: 2rem;
 }
 
-.timeline-list,
-.resume-timeline {
+.timeline-list {
     border-left: 1px solid var(--color-border);
     display: grid;
     gap: 1.1rem;
     margin-left: 1.35rem;
 }
 
-.timeline-item,
-.resume-item {
+.timeline-item {
     display: grid;
     gap: 1rem;
     grid-template-columns: auto 1fr;
@@ -349,7 +346,6 @@ button:focus-visible {
 }
 
 .timeline-item h3,
-.resume-item h3,
 .publication-item h2,
 .post-card h2 {
     color: var(--color-forest);
@@ -361,7 +357,6 @@ button:focus-visible {
 }
 
 .timeline-item p,
-.resume-item p,
 .publication-item p,
 .post-card p {
     color: var(--color-muted);
@@ -552,15 +547,6 @@ button:focus-visible {
 .blog-content pre {
     border-radius: 8px;
     overflow-x: auto;
-}
-
-.resume-section {
-    padding-top: 2rem;
-}
-
-.resume-item {
-    border-bottom: 1px solid var(--color-border);
-    padding: 0 0 1.1rem 1.2rem;
 }
 
 .site-footer {

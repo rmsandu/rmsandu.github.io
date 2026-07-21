@@ -6,11 +6,6 @@ freezer = Freezer(app)
 
 
 @freezer.register_generator
-def render_page():
-    yield {"page_name": "resume"}
-
-
-@freezer.register_generator
 def render_blog_page():
     for post in list_all_blog_info():
         yield {"page_name": post["filename"]}

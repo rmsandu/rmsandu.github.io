@@ -10,7 +10,6 @@ from src.markdown_extensions import BulmaImageExtension
 
 app = Flask(__name__)
 
-PAGES_DIR = os.path.join(os.path.dirname(__file__), "templates/pages")
 BLOG_DIR = os.path.join(os.path.dirname(__file__), "templates/pages/blog")
 DATA_DIR = os.path.join(os.path.dirname(__file__), "data")
 
@@ -114,18 +113,6 @@ def index():
 @app.route("/publications.html")
 def publications():
     return render_template("pages/publications.html", data=load_yaml_data("publications.yaml"))
-
-
-@app.route("/<page_name>.html")
-def render_page(page_name):
-    page_path = os.path.join(PAGES_DIR, f"{page_name}.html")
-    if os.path.exists(page_path):
-        return render_template(
-            f"pages/{page_name}.html",
-            timeline=load_yaml_data("timeline.yaml").get("timeline", []),
-        )
-    else:
-        return "Page not found", 404
 
 
 @app.route("/blogList.html")

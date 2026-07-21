@@ -142,6 +142,7 @@ def test_homepage_render_flow():
     assert "https://github.com/rmsandu" in html
     assert "Featured blog projects" in html
     assert "Experience &amp; Education" in html
+    assert "Resume" not in html
     assert "Machine Learning Engineer" in html
     assert "multi-view character generation" in html
     assert "Machine Learning Team Lead" in html
@@ -196,19 +197,10 @@ def test_publications_flow():
     assert client.get("/static/Biomedica_Sandu_2015_Poster.pdf").status_code == 200
 
 
-def test_resume_flow():
+def test_resume_page_removed():
     response = app.test_client().get("/resume.html")
-    html = response.get_data(as_text=True)
 
-    assert response.status_code == 200
-    assert "Download CV" in html
-    assert 'href="/static/Raluca_Sandu_CV.pdf"' in html
-    assert "Machine Learning Engineer" in html
-    assert "Machine Learning Team Lead" in html
-    assert "PhD in Biomedical Engineering" in html
-    assert "MSc in Biomedical Engineering" in html
-    assert "BSc in Systems Engineering" in html
-    assert "CSL" not in html
+    assert response.status_code == 404
 
 
 def test_static_freeze_flow(tmp_path):
@@ -220,10 +212,6 @@ def test_static_freeze_flow(tmp_path):
     freezer = Freezer(app)
 
     @freezer.register_generator
-    def render_page():
-        yield {"page_name": "resume"}
-
-    @freezer.register_generator
     def render_blog_page():
         yield {"page_name": "2025-04-18-wrinkle-segmentation"}
 
@@ -232,5 +220,5 @@ def test_static_freeze_flow(tmp_path):
     assert (tmp_path / "index.html").exists()
     assert (tmp_path / "blogList.html").exists()
     assert (tmp_path / "publications.html").exists()
-    assert (tmp_path / "resume.html").exists()
+    assert not (tmp_path / "resume.html").exists()
     assert (tmp_path / "blog" / "2025-04-18-wrinkle-segmentation.html").exists()
