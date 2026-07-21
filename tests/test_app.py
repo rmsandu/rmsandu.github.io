@@ -179,11 +179,16 @@ def test_blog_post_flow():
 
 
 def test_publications_flow():
-    response = app.test_client().get("/publications.html")
+    client = app.test_client()
+    response = client.get("/publications.html")
     html = response.get_data(as_text=True)
 
     assert response.status_code == 200
     assert "Volumetric quantitative ablation margins" in html
+    assert 'href="/static/Biomedica_Sandu_2015.pdf"' in html
+    assert "Poster PDF" in html
+    assert "citation_for_view=5qskcz0AAAAJ:u5HHmVD_uO8C" in html
+    assert client.get("/static/Biomedica_Sandu_2015.pdf").status_code == 200
 
 
 def test_resume_flow():
