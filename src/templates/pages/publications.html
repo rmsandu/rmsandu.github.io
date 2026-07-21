@@ -7,7 +7,7 @@
     <div class="container">
         <p class="eyebrow">Research</p>
         <h1>Publications</h1>
-        <p>Peer-reviewed journal articles and conference publicationsacross medical imaging, liver diseases, and respiratory signals.</p>
+        <p>Peer-reviewed journal articles and conference publications across medical imaging, liver diseases, and respiratory signals.</p>
     </div>
 </section>
 
@@ -26,16 +26,25 @@
                 <p>{{ pub.summary | truncate(360, True, '...') }}</p>
                 {% endif %}
             </div>
-            {% if pub.link or pub.poster_link or pub.scholar_link %}
-            <div class="publication-links">
-                {% if pub.link %}
-                <a class="text-link" href="{{ pub.link }}">{{ pub.link_label | default('Read more') }}</a>
+            {% if pub.link or pub.poster_link or pub.scholar_link or pub.image %}
+            <div class="publication-actions">
+                {% if pub.link or pub.poster_link or pub.scholar_link %}
+                <div class="publication-links">
+                    {% if pub.link %}
+                    <a class="text-link" href="{{ pub.link }}">{{ pub.link_label | default('Read more') }}</a>
+                    {% endif %}
+                    {% if pub.poster_link %}
+                    <a class="text-link" href="{{ pub.poster_link }}">Poster</a>
+                    {% endif %}
+                    {% if pub.scholar_link %}
+                    <a class="text-link" href="{{ pub.scholar_link }}">Google Scholar</a>
+                    {% endif %}
+                </div>
                 {% endif %}
-                {% if pub.poster_link %}
-                <a class="text-link" href="{{ pub.poster_link }}">Poster</a>
-                {% endif %}
-                {% if pub.scholar_link %}
-                <a class="text-link" href="{{ pub.scholar_link }}">Google Scholar</a>
+                {% if pub.image %}
+                <figure class="publication-image">
+                    <img src="{{ pub.image }}" alt="{{ pub.image_alt | default(pub.title) }}" loading="lazy">
+                </figure>
                 {% endif %}
             </div>
             {% endif %}
