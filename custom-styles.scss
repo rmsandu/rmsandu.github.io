@@ -457,7 +457,7 @@ button:focus-visible {
 
 .publication-item {
     display: flex;
-    gap: 1rem;
+    gap: 1.2rem;
     justify-content: space-between;
 }
 
@@ -465,18 +465,42 @@ button:focus-visible {
     font-weight: 700;
 }
 
+.publication-actions {
+    align-items: flex-start;
+    display: grid;
+    gap: 0.75rem;
+    justify-items: end;
+}
+
 .publication-links {
     align-items: flex-start;
     display: flex;
     flex-wrap: wrap;
-    column-gap: 0.65rem;
-    row-gap: 0.95rem;
+    column-gap: 0.45rem;
+    row-gap: 0.5rem;
     justify-content: flex-end;
 }
 
 .publication-links .text-link {
-    font-size: 0.8rem;
-    padding: 0.5rem 0.76rem;
+    font-size: 0.74rem;
+    padding: 0.36rem 0.58rem;
+}
+
+.publication-image {
+    aspect-ratio: 4 / 3;
+    background: var(--color-leaf);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    margin: 0;
+    overflow: hidden;
+    width: min(230px, 32vw);
+}
+
+.publication-image img {
+    display: block;
+    height: 100%;
+    object-fit: contain;
+    width: 100%;
 }
 
 .text-link,
@@ -599,6 +623,18 @@ button:focus-visible {
 
     .publication-item {
         display: grid;
+    }
+
+    .publication-actions {
+        justify-items: start;
+    }
+
+    .publication-links {
+        justify-content: flex-start;
+    }
+
+    .publication-image {
+        width: 100%;
     }
 
     .home-hero {

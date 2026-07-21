@@ -7,6 +7,8 @@ publications:
     link: "https://doi.org/10.3389/fonc.2021.623098"
     publisher: "Frontiers"
     issn: "2234-943X"
+    image: "/static/img/publications/qam-figure.jpg"
+    image_alt: "CT image, histogram, and 3D quantitative ablation margin visualization from the QAM article"
     summary: "Ensuring complete coverage of liver tumors with adequate margins during thermal ablation is essential for treatment success. Traditional 2D visual inspections are variable, so this study introduces a volumetric quantitative ablation margin (QAM) approach. Results confirmed its effectiveness, and the code is publicly available, promoting standardized, objective evaluation. "
 
   - title: "Accuracy of electrode placement in ire treatment with navigated guidance"
@@ -15,6 +17,8 @@ publications:
     year: 2021
     link: "https://doi.org/10.1007/s00270-020-02762-5"
     issn: "1432-086X"
+    image: "/static/img/publications/ire-electrode-placement.png"
+    image_alt: "CAS-ONE navigation workstation and adjustable arm setup for navigated IRE electrode placement"
     summary: "This study assesses the accuracy of electrode placement in irreversible electroporation (IRE) for liver tumors using a stereotactic CT-based navigation system. Analyzing data from 51 treatments involving 84 tumors in 60 patients, the study compared planned and actual electrode placements, measuring lateral and angular errors. The findings confirm that this navigation system is safe, accurate, and user-friendly for IRE treatments."
 
   - title: "Stereotactic image-guidance for ablation of malignant liver tumors"
@@ -24,6 +28,8 @@ publications:
     month: "Oct"
     year: 2019
     link: "https://doi.org/10.5772/intechopen.89722"
+    image: "/static/img/publications/intechopen.png"
+    image_alt: "IntechOpen workflow figure for stereotactic image-guided liver tumor ablation"
     summary: "This book chapter in 'Liver Pathology' provides an in-depth review of stereotactic percutaneous ablation, a rapidly advancing treatment for liver tumors. Improved CT imaging and stereotactic image-guidance enhance the safety, efficacy, and accuracy of ablation, making it an increasingly favored option among physicians."
 
   - title: "Image-Guidance for Non-Anatomical Liver Resections: An ex-vivo Study"
@@ -65,5 +71,7 @@ publications:
     link: "/static/Biomedica_Sandu_2015.pdf"
     link_label: "Conference paper"
     poster_link: "/static/Biomedica_Sandu_2015_Poster.pdf"
+    image: "/static/img/publications/biomedica-capnography.jpg"
+    image_alt: "Poster for reference values for volumetric capnography in spontaneously breathing individuals"
     summary: Capnography is a simple non-invasive technique for monitoring the CO2 concentration in the exhaled breath. It is used to detect early adverse respiratory events and life-threatening conditions by cardiologists, pediatrics, in respiratory therapy and emergency care. Although it describes the patient’s cardiorespiratory dynamics the technique is still underutilized due to a lack of quantitative means for assessing it. An automated analysis of the capnogram would allow a quantitative assessment of the cardiorespiratory states of both healthy and diseased patients. The typical feature values determined in this study for healthy subjects are comparable with values reported in related literature.
     year: 2015 
