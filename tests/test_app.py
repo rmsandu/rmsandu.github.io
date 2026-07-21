@@ -129,7 +129,7 @@ def test_load_yaml_data_loads_shared_timeline_data():
     data = load_yaml_data("timeline.yaml")
 
     assert data["timeline"][0]["type"] == "work"
-    assert data["timeline"][0]["title"] == "AI Computer Vision Engineer | Stealth Start-Up"
+    assert data["timeline"][0]["title"] == "Machine Learning Engineer | Stealth AI Start-up"
 
 
 def test_homepage_render_flow():
@@ -141,9 +141,11 @@ def test_homepage_render_flow():
     assert "rmsan@duck.com" in html
     assert "https://github.com/rmsandu" in html
     assert "Featured blog projects" in html
-    assert "Experience &amp; education" in html
-    assert "AI Computer Vision Engineer" in html
+    assert "Experience &amp; Education" in html
+    assert "Machine Learning Engineer" in html
+    assert "multi-view character generation" in html
     assert "Machine Learning Team Lead" in html
+    assert "7+ projects" in html
     assert "CSL" not in html
     assert "A brief timeline" not in html
     assert ">Path<" not in html
@@ -201,11 +203,11 @@ def test_resume_flow():
     assert response.status_code == 200
     assert "Download CV" in html
     assert 'href="/static/Raluca_Sandu_CV.pdf"' in html
-    assert "AI Computer Vision Engineer" in html
+    assert "Machine Learning Engineer" in html
     assert "Machine Learning Team Lead" in html
-    assert "PhD Biomedical Engineering" in html
-    assert "MSc Biomedical Engineering" in html
-    assert "BSc Applied Computer Science" in html
+    assert "PhD in Biomedical Engineering" in html
+    assert "MSc in Biomedical Engineering" in html
+    assert "BSc in Systems Engineering" in html
     assert "CSL" not in html
 
 
