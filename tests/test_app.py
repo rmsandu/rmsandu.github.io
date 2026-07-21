@@ -186,9 +186,12 @@ def test_publications_flow():
     assert response.status_code == 200
     assert "Volumetric quantitative ablation margins" in html
     assert 'href="/static/Biomedica_Sandu_2015.pdf"' in html
-    assert "Poster PDF" in html
-    assert "citation_for_view=5qskcz0AAAAJ:u5HHmVD_uO8C" in html
+    assert "Conference paper" in html
+    assert 'href="/static/Biomedica_Sandu_2015_Poster.pdf"' in html
+    assert "Poster" in html
+    assert "citation_for_view=5qskcz0AAAAJ:u5HHmVD_uO8C" not in html
     assert client.get("/static/Biomedica_Sandu_2015.pdf").status_code == 200
+    assert client.get("/static/Biomedica_Sandu_2015_Poster.pdf").status_code == 200
 
 
 def test_resume_flow():

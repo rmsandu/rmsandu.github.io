@@ -26,10 +26,13 @@
                 <p>{{ pub.summary | truncate(360, True, '...') }}</p>
                 {% endif %}
             </div>
-            {% if pub.link or pub.scholar_link %}
+            {% if pub.link or pub.poster_link or pub.scholar_link %}
             <div class="publication-links">
                 {% if pub.link %}
                 <a class="text-link" href="{{ pub.link }}">{{ pub.link_label | default('Read more') }}</a>
+                {% endif %}
+                {% if pub.poster_link %}
+                <a class="text-link" href="{{ pub.poster_link }}">Poster</a>
                 {% endif %}
                 {% if pub.scholar_link %}
                 <a class="text-link" href="{{ pub.scholar_link }}">Google Scholar</a>
