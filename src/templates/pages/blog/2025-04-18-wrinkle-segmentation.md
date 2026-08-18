@@ -225,7 +225,7 @@ python scripts/download_weights.py
 python app.py
 ```
 
-The demo is also being migrated to a permanent [Hugging Face Space](https://huggingface.co/rmsandu/ffhq-wrinkle-unet) so you won’t need to run anything locally at all — check the repo for the current link.
+The demo will probably NOT be migrated to a permanent [Hugging Face Space](https://huggingface.co/rmsandu/ffhq-wrinkle-unet) because I need to upgrade to HF Pro and well, I am not sure it is worth it. However you can upload the model yourself to HF app and if you please cite my work and let me know. Otherwise, feel free to try the demo locally on your machine with `app.py`
 
 <figure class="image">
     <img src="/static/img/demo_screenshot.png" alt="Gradio interface showing real-time wrinkle segmentation on a face photo" loading="lazy" />
