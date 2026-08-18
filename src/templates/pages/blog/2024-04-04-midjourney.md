@@ -34,27 +34,27 @@ Here some images I generated using the following prompt `\prompt a photograph of
 <div class="grid  is-col-min-7">
     <div class="cell">
         <figure class="image is-square">
-            <img src="/static/img/uploads/album/Canon-Low-Angle perspective.jpg" />
+            <img src="/static/img/uploads/album/Canon-Low-Angle perspective.jpg" alt="AI-generated deer photo simulating a Canon lens, low-angle perspective" />
         </figure>
     </div>
     <div class="cell">
         <figure class="image is-square">
-            <img src="/static/img/uploads/album/Canon.jpg" />
+            <img src="/static/img/uploads/album/Canon.jpg" alt="AI-generated deer photo simulating a Canon lens" />
         </figure>
     </div>
     <div class="cell">
         <figure class="image is-square">
-            <img src="/static/img/uploads/album/Leica-Summicron.jpg" />
+            <img src="/static/img/uploads/album/Leica-Summicron.jpg" alt="AI-generated deer photo simulating a Leica Summicron lens" />
         </figure>
     </div>
     <div class="cell">
         <figure class="image is-square">
-            <img src="/static/img/uploads/album/Leica.jpg" />
+            <img src="/static/img/uploads/album/Leica.jpg" alt="AI-generated deer photo simulating a Leica lens" />
         </figure>
     </div>
     <div class="cell">
         <figure class="image is-square">
-            <img src="/static/img/uploads/album/Nikon.jpg" />
+            <img src="/static/img/uploads/album/Nikon.jpg" alt="AI-generated deer photo simulating a Nikon lens" />
         </figure>
     </div>
 </div>
@@ -66,27 +66,27 @@ Other photos of landscapes and animals I have generated:
 <div class="grid is-col-min-7">
     <div class="cell">
         <figure class="image is-square">
-            <img src="/static/img/uploads/realistic/Blue Footed Boobie.png" />
+            <img src="/static/img/uploads/realistic/Blue Footed Boobie.png" alt="AI-generated photo of a blue-footed booby" />
         </figure>
     </div>
     <div class="cell">
         <figure class="image is-square">
-            <img src="/static/img/uploads/realistic/Lion Canon.png" />
+            <img src="/static/img/uploads/realistic/Lion Canon.png" alt="AI-generated photo of a lion simulating a Canon lens" />
         </figure>
     </div>
     <div class="cell">
         <figure class="image is-square">
-            <img src="/static/img/uploads/realistic/Mountain Range.png" />
+            <img src="/static/img/uploads/realistic/Mountain Range.png" alt="AI-generated photo of a mountain range" />
         </figure>
     </div>
     <div class="cell">
         <figure class="image is-square">
-            <img src="/static/img/uploads/realistic/Mountains Spring.png" />
+            <img src="/static/img/uploads/realistic/Mountains Spring.png" alt="AI-generated photo of mountains in spring" />
         </figure>
     </div>
     <div class="cell">
         <figure class="image is-square">
-            <img src="/static/img/uploads/realistic/Paraglider.png" />
+            <img src="/static/img/uploads/realistic/Paraglider.png" alt="AI-generated photo of a paraglider over mountains" />
         </figure>
     </div>
 </div>

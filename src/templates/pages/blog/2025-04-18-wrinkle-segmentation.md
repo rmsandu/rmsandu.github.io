@@ -24,8 +24,7 @@ tags: [segmentation, machine learning, ai, deep learning, Unet]
 Facial wrinkle analysis is essential for a range of applications, from cosmetic product evaluation to dermatological interventions, invasive or non-invasive. In the past, traditional methods for detecting fine lines on a human face often rely on classical image processing—think edge detection or thresholding. While useful as a baseline, these methods tend to struggle with varying lighting conditions, complex skin textures, and subtle wrinkles, or telling the difference between facial hair and a wrinkle (damn edges!.)
 After some literature research, I was surprised to discover that the classic U-Net, a popular deep learning architecture initially designed for biomedical image segmentation (e.g., isolating cells, organs, and more) still renders the best results for facial wrinkle segmentation. In this blog post, I’ll discuss if U-Net for automatic wrinkle segmentation is good enough to get a decent IoU & Dice score, lessons learned, and next tips.
 
-I documented my training and evaluation algorithm in a Github repository: [FFHQ-detect-face-wrinkles](https://github.com/rmsandu/FFHQ-detect-face-wrinkles). The demo is up on
-Google Colab.
+I documented my training and evaluation algorithm in a Github repository: [FFHQ-detect-face-wrinkles](https://github.com/rmsandu/FFHQ-detect-face-wrinkles), which now also hosts pretrained weights on the Hugging Face Hub, unit tests, and a CI pipeline — more on that in the [Demo](#demo) section below.
 
 <a id="background"></a>
 
@@ -46,6 +45,8 @@ Wrinkles are a pain in the neck for both humans and deep learning models:
 
 ## Model architecture
 
+The model is implemented as an Attention U-Net with a ResNet50 encoder, split across two files in the repo:
+
 - **`unet/unet_model.py`**: Defines the U-Net model architecture.
 - **`unet/unet_parts.py`**: Contains the building blocks of the U-Net model, such as convolutional layers, downsampling, and upsampling blocks.
 
@@ -55,9 +56,7 @@ Following the steps in literature, the model I chose is a U-Net with a ResNet50 
 
 ### Decoder
 
-The decoder follows the standard U-Net upsampling path, with skip connections from the encoder. Each skip connection from the encoder is filtered through an Attention Gate before merging. This essentially builds an Attention U-Net – the attention gates learn to emphasize only the relevant features from the encoder (e.g. those pixels that likely belong to wrinkles) and suppress noise (like backgrounds or unrelated textures). Recent research indicates attention can significantly improve segmentation of fine lines. For instance, Yang et al. (2024) introduced Striped WriNet, which uses a Striped Attention Module to focus on long, thin wrinkle patterns. Inspired by that, I integrated attention into my U-Net to help distinguish wrinkles from the surrounding skin by amplifying the telltale features of wrinkles. This is especially useful for such extremely small targets; attention acts like a spotlight on the wrinkles so they don’t get lost in the vast expanse of forehead.
-
-Optionally one can use attention mechanisms to improve the results.Recent research indicates attention can significantly improve segmentation of fine lines. For instance, [Yang et al. (2024)](https://www.sciencedirect.com/science/article/abs/pii/S1746809423012508) introduced Striped WriNet, which features a Striped Attention Module (SAM) to focus on long, thin wrinkle patterns. Adding attention to a U-Net could help the model distinguish wrinkles from skin texture by emphasizing relevant features. This is especially useful for extremely small targets like wrinkles, as attention can amplify their signal relative to the vast background.
+The decoder follows the standard U-Net upsampling path, with skip connections from the encoder. Each skip connection from the encoder is filtered through an Attention Gate before merging. This essentially builds an Attention U-Net – the attention gates learn to emphasize only the relevant features from the encoder (e.g. those pixels that likely belong to wrinkles) and suppress noise (like backgrounds or unrelated textures). Recent research indicates attention can significantly improve segmentation of fine lines. For instance, [Yang et al. (2024)](https://www.sciencedirect.com/science/article/abs/pii/S1746809423012508) introduced Striped WriNet, which features a Striped Attention Module (SAM) to focus on long, thin wrinkle patterns. Inspired by that, I integrated attention into my U-Net to help distinguish wrinkles from the surrounding skin by amplifying the telltale features of wrinkles. This is especially useful for such extremely small targets; attention acts like a spotlight on the wrinkles so they don’t get lost in the vast expanse of forehead.
 
 **The decoder uses transposed convolutions (learned upsampling) to get back to full 512×512 resolution.**
 
@@ -73,19 +72,19 @@ The project leverages the [FFHQ-Wrinkle dataset](https://github.com/labhai/ffhq-
 
 - **Kim et al.’s wrinkle dataset (820 masks)** – The authors of the UNet++ paper provided their own dataset of manually annotated fine wrinkles across the entire face. I found their data via their project GitHub. I primarily used the manual annotations from this set too and removed the masks that overlapped with the FFHQ wrinkle dataset.
 
-I modified the **`face_masking.py`** to a new version of **`face_parsing_extraction.py`** usign [BiSeNET](https://github.com/CoinCheung/BiSeNet) to crop faces given an input folder and provided face-parsed labels for the face images corresponding to the manual wrinkle labels as 512x512 numpy arrays, which were obtained using [face-parsing.PyTorch](https://github.com/zllrunning/face-parsing.PyTorch). This way the user can create new manual labels and generate new face-parsed images.
+I modified the **`face_masking.py`** to a new version of **`face_parsing_extraction.py`** using [BiSeNET](https://github.com/CoinCheung/BiSeNet) to crop faces given an input folder and provided face-parsed labels for the face images corresponding to the manual wrinkle labels as 512x512 numpy arrays, which were obtained using [face-parsing.PyTorch](https://github.com/zllrunning/face-parsing.PyTorch). This way the user can create new manual labels and generate new face-parsed images.
 
-**The pre-trained face weights can be downloaded from [here](https://drive.google.com/file/d/154JgKpzCPW82qINcVieuPH3fZ2e0P812/view) . The pre-trained wrinkle weights can be downloaded from [here](https://www.dropbox.com/scl/fi/kciagv4foq9a2oemkkn3g/best_checkpoint_iou032.pth?rlkey=1a4ff61rpj6kxn5txcgrkbxob&st=xy6qh2t3&dl=0). Both ".pth" weight files should be saved in "res/cp/".**
+**The pre-trained wrinkle weights are now hosted on the [Hugging Face Hub](https://huggingface.co/rmsandu/ffhq-wrinkle-unet) as SafeTensors and auto-download via `scripts/download_weights.py` — no more juggling Google Drive/Dropbox links.**
 
 <div class="grid is-col-min-7">
     <div class="cell">
         <figure class="image is-square">
-            <img src="/static/img/00001.png" />
+            <img src="/static/img/00001.png" alt="Original FFHQ face image before wrinkle-mask preprocessing" />
         </figure>
     </div>
     <div class="cell">
         <figure class="image is-square">
-            <img src="/static/img/00001_faceMask.png" />
+            <img src="/static/img/00001_faceMask.png" alt="BiSeNet face-parsing mask used to crop the same face image" />
         </figure>
     </div>
 </div>
@@ -111,7 +110,7 @@ Because wrinkles are so thin, one idea was to slightly dilate (thicken) the grou
 Here is the workflow for the face pre-processing:
 
 <figure class="image">
-    <img src="/static/img/workflow-unet.png" />
+    <img src="/static/img/workflow-unet.png" alt="Face pre-processing workflow diagram" />
 </figure>
 <figcaption>Face Pre-Processing Workflow</figcaption>
 
@@ -135,7 +134,7 @@ In practice, the **Combined loss = Dice + Focal** pushed the model to pay attent
 **Hyperparameters**
 All the hyperparameters can be set in **`config.yaml`** file to set the desired training parameters. [Weights&Biases](https://wandb.ai/site) is used for tracking.
 
-- `evaluate.py` and `losses.py` : Evaluates the trained model on the validation dataset. It computes various metrics such as Dice score, precision, recall, F1 score, and AUC. It also logs and saves images for visualization. For Dice score, a combined loss of average Dice Loss + average Focal Loss has been used due to the high class-imbalace. This loss function balances class imbalance and model confidence by penalizing incorrect predictions more aggressively. Itersection-over-Union (IoU or Jaccard Index) is the primary metric of interest to improve upon. IoU directly measures how well the predicted wrinkle mask overlaps with ground truth, which is crucial when the positive region is very small​.
+- `evaluate.py` and `losses.py` : Evaluates the trained model on the validation dataset. It computes various metrics such as Dice score, precision, recall, F1 score, and AUC. It also logs and saves images for visualization. For Dice score, a combined loss of average Dice Loss + average Focal Loss has been used due to the high class-imbalance. This loss function balances class imbalance and model confidence by penalizing incorrect predictions more aggressively. Intersection-over-Union (IoU or Jaccard Index) is the primary metric of interest to improve upon. IoU directly measures how well the predicted wrinkle mask overlaps with ground truth, which is crucial when the positive region is very small​.
 
 The evaluation code computes not only IoU but also precision, recall, F1, and AUC. Monitoring F1-score (which for segmentation is the same as Dice coefficient) is useful since it’s insensitive to true negatives (dominant here) and gives a sense of balance between precision and recall. In Kim et al.’s experiments, Dice+Focal training yielded an F1 of 0.6157 and IoU ~0.45​, whereas Moon et al. report higher F1 (around 0.64) and Jaccard (~0.48) after their advanced pretrainig. By examining precision-recall curve alongside IoU, we can understand if improvements should focus on reducing false positives or recovering more missed wrinkles. A balanced F1 and high IoU are the end-goals.
 
@@ -165,25 +164,25 @@ The evaluation code computes not only IoU but also precision, recall, F1, and AU
 | AMP / Mixed precision | Disabled                                           |
 
 <figure class="image">
-    <img src="/static/img/evaluation_unet_results.png" />
+    <img src="/static/img/evaluation_unet_results.png" alt="Weights and Biases evaluation plots showing total loss and precision curves" />
 </figure>
 <figcaption>Weights&Biases evaluation plots, total loss, precision</figcaption>
 <p></p>
 
 ### Results
 
-In practice, my model’s IoU on the validation set ended up in the mid 0.3s (around 0.34), and the Dice/F1 around 0.60. This is in the same ballpark as the numbers reported by Kim et al. (2024) for their UNet++ (they achieved IoU ≈ 0.45 and F1 ≈ 0.616). Considering I did not use the 50k extra images or the fancy multi-channel input that Moon et al. used, I’m quite happy that a straightforward U-Net model can get that close to state-of-the-art. It validates that the architectural choices (ResNet50 backbone, attention, loss functions) were on point. To get a better sense of model behavior, I also looked at the precision-recall curve. It showed that if I tuned the probability threshold a bit lower than 0.5, I could catch more wrinkles (improve recall) without tanking precision too much – which would boost the F1 a bit more. This is a common scenario in medical-like segmentation: you might prefer to err on the side of marking a wrinkle that isn’t there (false positive) rather than missing a real wrinkle (false negative), depending on the application. By examining precision and recall, I could decide how to balance the model if, say, a dermatologist user said “I want to see all possible wrinkles, even if a few turns out to be skin lines.” The AUC seems inflated possibly showing that I am over-fitting, but that’s typical for highly imbalanced segmentation task.
+In practice, my model’s IoU on the validation set ended up in the mid 0.3s (around 0.34), and the Dice/F1 around 0.51. This is in the same ballpark as the numbers reported by Kim et al. (2024) for their UNet++ (they achieved IoU ≈ 0.45 and F1 ≈ 0.616). Considering I did not use the 50k extra images or the fancy multi-channel input that Moon et al. used, I’m quite happy that a straightforward U-Net model can get reasonably close to state-of-the-art with a much simpler setup. It validates that the architectural choices (ResNet50 backbone, attention, loss functions) were on point. To get a better sense of model behavior, I also looked at the precision-recall curve. It showed that if I tuned the probability threshold a bit lower than 0.5, I could catch more wrinkles (improve recall) without tanking precision too much – which would boost the F1 a bit more. This is a common scenario in medical-like segmentation: you might prefer to err on the side of marking a wrinkle that isn’t there (false positive) rather than missing a real wrinkle (false negative), depending on the application. By examining precision and recall, I could decide how to balance the model if, say, a dermatologist user said “I want to see all possible wrinkles, even if a few turns out to be skin lines.” The AUC seems inflated possibly showing that I am over-fitting, but that’s typical for highly imbalanced segmentation task.
 
 <div class="grid is-col-min-7">
     <div class="cell">
         <figure class="image is-square">
-            <img src="/static/img/Overlay_Image_4_Epoch_5_unet.png" />
+            <img src="/static/img/Overlay_Image_4_Epoch_5_unet.png" alt="Predicted vs ground-truth wrinkle overlay at epoch 5" />
         </figure>
         <figcaption>Epoch 5 Wrinkles Overlay, Green true labels, Red predicted labels</figcaption>
     </div>
     <div class="cell">
         <figure class="image is-square">
-            <img src="/static/img/Overlay_Image_4_Epoch_60_unet.png" />
+            <img src="/static/img/Overlay_Image_4_Epoch_60_unet.png" alt="Predicted vs ground-truth wrinkle overlay at epoch 60" />
         </figure>
          <figcaption>Epoch 60 Wrinkles Overlay, Green true labels, Red predicted labels</figcaption>
     </div>
@@ -208,7 +207,7 @@ In practice, my model’s IoU on the validation set ended up in the mid 0.3s (ar
 
 **Class balancing and patching**: Next I will consider approaches like oversampling wrinkle regions or training in patches focusing on areas likely to have wrinkles (like around eyes, forehead, mouth.). One idea is to sample patches of the image during training that contain at least one wrinkle, to avoid too many all-background patches. A patch-based refinement (zooming into high-importance areas) is something else that I marked as a potential future improvement.
 
-**Weakly supervised texture maps**: Moon et al. (2024) approached the imbalance from a different angle – they leveraged 50k weakly-labeled images to pretrain their model. In their two-stage strategy, the first stage teaches the model “what a wrinkle could look like” by predicting texture maps on a large dataset, and the second stage fine-tunes on the smaller true dataset. By doing so, they achieved an F1-score around 0.64 and Jaccard Index (IoU) ~0.48, which is currently one of the best reported results for this task​. I didn’t use the weak data for training in this project (to keep things simpler and purely supervised), but that’s my next stepy: more data (even if noisy) can help if used carefully.
+**Weakly supervised texture maps**: Moon et al. (2024) approached the imbalance from a different angle – they leveraged 50k weakly-labeled images to pretrain their model. In their two-stage strategy, the first stage teaches the model “what a wrinkle could look like” by predicting texture maps on a large dataset, and the second stage fine-tunes on the smaller true dataset. By doing so, they achieved an F1-score around 0.64 and Jaccard Index (IoU) ~0.48, which is currently one of the best reported results for this task​. I didn’t use the weak data for training in this project (to keep things simpler and purely supervised), but that’s my next step: more data (even if noisy) can help if used carefully.
 
 Finally, it’s worth noting that evaluating wrinkle segmentation is inherently a bit subjective – if my model predicts a wrinkle that the ground truth mask missed, is it truly a false positive or did the annotator just not mark that faint line? I’ve seen cases in the outputs where I honestly think the model found a real wrinkle that the label didn’t have. In a practical application, one might even intentionally bias the model to over-predict slightly, then have a human review the suggested wrinkles. That could be a semi-automated approach to eventually build an even bigger high-quality labeled dataset.
 
@@ -218,9 +217,26 @@ Wrinkle segmentation is hard. It taught me to pay attention (literally, via atte
 
 ## Demo
 
-What’s a project without a cool demo? There is an interactive demo where you can upload a face photo (or use one from FFHQ) and see the model highlight the wrinkles. It’s both fascinating and a bit frightening. I used Gradio and the code can be run from `app.py`. Alternatively, I quickly pulled together this [Colab Notebook](https://colab.research.google.com/drive/1jUC-bvvxG0nGmb5tz_v3xgiDNmRffU4i?usp=sharing) (that might not work because I continuously tweak it).
+What’s a project without a cool demo? There is an interactive Gradio demo where you can upload a face photo (or use one from FFHQ) and see the model highlight the wrinkles. It’s both fascinating and a bit frightening. Since the pretrained weights now live on the Hugging Face Hub and download automatically, running it locally is as simple as:
+
+```bash
+pip install -r requirements-demo.txt
+python scripts/download_weights.py
+python app.py
+```
+
+The demo is also being migrated to a permanent [Hugging Face Space](https://huggingface.co/rmsandu/ffhq-wrinkle-unet) so you won’t need to run anything locally at all — check the repo for the current link.
 
 <figure class="image">
-    <img src="/static/img/demo_screenshot.png" />
+    <img src="/static/img/demo_screenshot.png" alt="Gradio interface showing real-time wrinkle segmentation on a face photo" />
 </figure>
 <figcaption>Gradio Interface for Real-time Wrinkle segmentation</figcaption>
+
+## Useful resources
+
+- [FFHQ-detect-face-wrinkles](https://github.com/rmsandu/FFHQ-detect-face-wrinkles) — the full training/evaluation code, CI pipeline, and unit tests.
+- [Pretrained weights on the Hugging Face Hub](https://huggingface.co/rmsandu/ffhq-wrinkle-unet) — auto-downloaded by the demo and evaluation scripts.
+- [FFHQ-Wrinkle dataset](https://github.com/labhai/ffhq-wrinkle-dataset) by Moon et al. (2024).
+- [Kim et al.’s wrinkle dataset](https://github.com/jun01pd2015/wrinkle_dataset) (UNet++ paper).
+
+Funnily enough, the repo’s README now cites this very blog post back — a nice full-circle moment since it started as a write-up of the repo and now the repo points back at it.

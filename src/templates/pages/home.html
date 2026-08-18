@@ -2,6 +2,26 @@
 
 {% block site_header %}{% endblock %}
 
+{% block meta_description %}{{ home.profile.name }} is an AI/ML engineer and researcher in Zurich, Switzerland, working on computer vision, generative AI, and medical imaging.{% endblock %}
+
+{% block structured_data %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": {{ home.profile.name | tojson }},
+    "jobTitle": {{ home.profile.role | tojson }},
+    "url": {{ canonical_url | tojson }},
+    "email": "mailto:{{ home.profile.email }}",
+    "sameAs": [
+        {{ home.profile.github | tojson }},
+        {{ home.profile.linkedin | tojson }},
+        {{ home.profile.scholar | tojson }}
+    ]
+}
+</script>
+{% endblock %}
+
 {% block main %}
 <section class="home-hero section" aria-labelledby="home-title">
     <div class="container home-container">
@@ -49,6 +69,7 @@
                 <a href="#projects">Projects</a>
                 <a href="{{ url_for('blogList') }}">Blog</a>
                 <a href="{{ url_for('publications') }}">Publications</a>
+                <a href="{{ url_for('consulting') }}">Consulting</a>
             </div>
 
         </div>

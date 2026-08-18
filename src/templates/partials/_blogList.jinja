@@ -4,7 +4,7 @@
     <article class="post-card">
         <a class="post-card-image" href="{{ url_for('render_blog_page', page_name=blogPost.filename) }}" aria-label="Read {{ blogPost.title | striptags }}">
             {% if blogPost.coverImg %}
-            <img src="{{ url_for('static', filename=blogPost.coverImg) }}" alt="">
+            <img src="{{ url_for('static', filename=blogPost.coverImg) }}" alt="{{ blogPost.title | striptags }}">
             {% else %}
             <span>{{ blogPost.title | striptags }}</span>
             {% endif %}

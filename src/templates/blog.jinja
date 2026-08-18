@@ -2,6 +2,30 @@
 
 {% block page_title %}{{ title }} | Raluca-Maria Sandu{% endblock %}
 
+{% block meta_description %}{{ subtitle }}{% endblock %}
+
+{% block og_type %}article{% endblock %}
+
+{% block og_image %}{% if coverImg %}{{ url_for('static', filename=coverImg, _external=True) }}{% else %}{{ super() }}{% endif %}{% endblock %}
+
+{% block structured_data %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": {{ title | tojson }},
+    "description": {{ subtitle | tojson }},
+    {% if date %}"datePublished": {{ date.isoformat() | tojson }},{% endif %}
+    "image": {{ (url_for('static', filename=coverImg, _external=True) if coverImg else "") | tojson }},
+    "author": {
+        "@type": "Person",
+        "name": "Raluca-Maria Sandu"
+    },
+    "mainEntityOfPage": {{ canonical_url | tojson }}
+}
+</script>
+{% endblock %}
+
 {% block main %}
 <article class="blog-post-page">
     <header class="blog-post-header">
@@ -23,7 +47,7 @@
     {% if coverImg %}
     <div class="container blog-container">
         <figure class="blog-cover">
-            <img src="{{ url_for('static', filename=coverImg) }}" alt="">
+            <img src="{{ url_for('static', filename=coverImg) }}" alt="{{ title }}">
         </figure>
     </div>
     {% endif %}
