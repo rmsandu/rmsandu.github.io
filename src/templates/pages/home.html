@@ -87,7 +87,7 @@
             <article class="timeline-item">
                 <div class="timeline-icon">
                     {% if item.logo %}
-                    <img src="{{ url_for('static', filename=item.logo) }}" alt="{{ item.logo_alt }}" onerror="this.remove()">
+                    <img src="{{ url_for('static', filename=item.logo) }}" alt="{{ item.logo_alt }}" loading="lazy" onerror="this.remove()">
                     {% endif %}
                     {% if item.type == 'education' %}
                     <i class="fas fa-graduation-cap" aria-hidden="true"></i>

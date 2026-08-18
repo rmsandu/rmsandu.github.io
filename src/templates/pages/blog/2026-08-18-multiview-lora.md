@@ -31,12 +31,12 @@ The most recent full run (July 2026) processed every eligible instance under `da
 Here's what the accepted pairs actually look like — the composite next to the exact structured caption the pipeline generated:
 
 <figure class="image">
-    <img src="/static/img/multiview-sanity-check-2views.png" alt="Sanity-check contact sheet showing two accepted four-view composites (a table tennis racket and a red handbag) next to their structured Gemini-generated captions" />
+    <img src="/static/img/multiview-sanity-check-2views.png" alt="Sanity-check contact sheet showing two accepted four-view composites (a table tennis racket and a red handbag) next to their structured Gemini-generated captions" loading="lazy" />
 </figure>
 <figcaption>Two accepted composites with their structured [FOUR-VIEWS] / [TOP-LEFT] / [TOP-RIGHT] / [BOTTOM-LEFT] / [BOTTOM-RIGHT] captions.</figcaption>
 
 <figure class="image">
-    <img src="/static/img/multiview-sanity-check-4views.png" alt="Sanity-check contact sheet showing four accepted four-view composites (flowers, a toy motorcycle, a toy pistol, and a plush toy) next to their structured captions" />
+    <img src="/static/img/multiview-sanity-check-4views.png" alt="Sanity-check contact sheet showing four accepted four-view composites (flowers, a toy motorcycle, a toy pistol, and a plush toy) next to their structured captions" loading="lazy" />
 </figure>
 <figcaption>Four more accepted composites — this is the "sanity check" step I run before trusting a captioning batch enough to train on it.</figcaption>
 
@@ -54,13 +54,13 @@ What I'm explicitly *not* claiming yet is a finished evaluation — the blinded 
 <div class="grid is-col-min-7">
     <div class="cell">
         <figure class="image is-square">
-            <img src="/static/img/multiview-example-output1.jpeg" alt="Four generated views of a red desk lamp from different angles" />
+            <img src="/static/img/multiview-example-output1.jpeg" alt="Four generated views of a red desk lamp from different angles" loading="lazy" />
         </figure>
         <figcaption>An early four-view generation of a red desk lamp, from before the structured captioning pipeline existed.</figcaption>
     </div>
     <div class="cell">
         <figure class="image is-square">
-            <img src="/static/img/multiview-example-output2.jpeg" alt="Four generated views of a bedroom interior from different angles" />
+            <img src="/static/img/multiview-example-output2.jpeg" alt="Four generated views of a bedroom interior from different angles" loading="lazy" />
         </figure>
         <figcaption>Same story, a bedroom this time — consistent-looking, but generated under the old free-form caption format.</figcaption>
     </div>
