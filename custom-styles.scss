@@ -43,6 +43,13 @@ body {
     color: var(--color-forest);
     font-family: var(--font-body);
     line-height: 1.7;
+    padding-bottom: 3.5rem; // room for the fixed mobile .site-sidebar bar
+}
+
+@media (min-width: 1024px) {
+    body {
+        padding-bottom: 0;
+    }
 }
 
 body,
@@ -239,7 +246,6 @@ button:focus-visible {
     color: var(--color-coral);
 }
 
-.profile-actions,
 .credibility-tags,
 .tag-list {
     display: flex;
@@ -249,7 +255,6 @@ button:focus-visible {
     margin-top: 1.35rem;
 }
 
-.profile-actions a,
 .credibility-tags span,
 .tag-pill {
     border: 1px solid var(--color-border);
@@ -261,18 +266,65 @@ button:focus-visible {
     text-decoration: none;
 }
 
-.profile-actions a {
-    background: var(--color-leaf);
-}
-
-.profile-actions a:hover,
-.profile-actions a:focus,
 .tag-pill:hover,
 .tag-pill:focus,
 .tag-pill.is-selected {
     background: var(--color-yellow);
     border-color: var(--color-yellow);
     color: var(--color-forest);
+}
+
+// Persistent site-wide navigation. Mobile-first: a horizontal bar fixed to
+// the bottom of the viewport; on wide screens it becomes a vertical rail
+// fixed to the left, per request.
+.site-sidebar {
+    background: var(--color-paper);
+    border-top: 1px solid var(--color-border);
+    bottom: 0;
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    left: 0;
+    overflow-x: auto;
+    padding: 0.6rem 1rem;
+    position: fixed;
+    right: 0;
+    z-index: 8;
+}
+
+.site-sidebar a {
+    background: var(--color-leaf);
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    color: var(--color-forest);
+    flex-shrink: 0;
+    font-size: 0.82rem;
+    font-weight: 800;
+    padding: 0.4rem 0.8rem;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.site-sidebar a:hover,
+.site-sidebar a:focus {
+    background: var(--color-yellow);
+    border-color: var(--color-yellow);
+}
+
+@media (min-width: 1024px) {
+    .site-sidebar {
+        background: transparent;
+        border-top: none;
+        bottom: auto;
+        flex-direction: column;
+        justify-content: flex-start;
+        left: 1.5rem;
+        overflow-x: visible;
+        padding: 0;
+        right: auto;
+        top: 50%;
+        transform: translateY(-50%);
+    }
 }
 
 .section-heading {

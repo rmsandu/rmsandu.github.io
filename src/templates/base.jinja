@@ -39,6 +39,14 @@
 <body>
     <a class="skip-link" href="#main-content">Skip to content</a>
 
+    <nav class="site-sidebar" aria-label="page sections">
+        <a href="{{ url_for('index') }}#timeline">Timeline</a>
+        <a href="{{ url_for('index') }}#projects">Projects</a>
+        <a href="{{ url_for('blogList') }}">Blog</a>
+        <a href="{{ url_for('publications') }}">Publications</a>
+        <a href="{{ url_for('consulting') }}">Consulting</a>
+    </nav>
+
     {% block site_header %}
     <header class="site-header">
         <nav class="site-nav" aria-label="main navigation">

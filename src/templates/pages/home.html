@@ -43,6 +43,9 @@
                 <a class="contact-icon" href="{{ home.profile.scholar }}" aria-label="Raluca on Google Scholar">
                     <i class="fas fa-graduation-cap" aria-hidden="true"></i>
                 </a>
+                <a class="contact-icon" href="{{ url_for('feed') }}" aria-label="Subscribe via RSS">
+                    <i class="fas fa-rss" aria-hidden="true"></i>
+                </a>
             </div>
 
             <h1 id="home-title" class="home-title">{{ home.profile.name }}</h1>
@@ -63,15 +66,6 @@
             {% if home.profile.personal %}
             <p class="home-summary is-personal">{{ home.profile.personal }}</p>
             {% endif %}
-
-            <div class="profile-actions" aria-label="site sections">
-                <a href="#timeline">Timeline</a>
-                <a href="#projects">Projects</a>
-                <a href="{{ url_for('blogList') }}">Blog</a>
-                <a href="{{ url_for('publications') }}">Publications</a>
-                <a href="{{ url_for('consulting') }}">Consulting</a>
-            </div>
-
         </div>
     </div>
 </section>
