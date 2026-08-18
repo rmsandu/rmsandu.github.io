@@ -6,8 +6,8 @@
     --color-forest-soft: #2f6b4f;
     --color-moss: #dceadd;
     --color-leaf: #eff7ef;
-    --color-coral: #e96b5f;
-    --color-orange: #e8913a;
+    --color-coral: #c9432f; // darkened from #e96b5f for WCAG AA text contrast (was 3.12:1, now ~4.86:1)
+    --color-orange: #b35c00; // darkened from #e8913a for WCAG AA text contrast (was 2.46:1, now ~4.72:1)
     --color-yellow: #f1c84b;
     --color-border: #d8e5d8;
     --color-muted: #58735f;
