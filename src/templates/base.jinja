@@ -40,11 +40,11 @@
     <a class="skip-link" href="#main-content">Skip to content</a>
 
     <nav class="site-sidebar" aria-label="page sections">
-        <a href="{{ url_for('index') }}#timeline">Timeline</a>
-        <a href="{{ url_for('index') }}#projects">Projects</a>
-        <a href="{{ url_for('blogList') }}">Blog</a>
-        <a href="{{ url_for('publications') }}">Publications</a>
-        <a href="{{ url_for('consulting') }}">Consulting</a>
+        <a href="{{ url_for('index') }}"><i class="fas fa-home" aria-hidden="true"></i>Home</a>
+        <a href="{{ url_for('index') }}#timeline"><i class="fas fa-file-alt" aria-hidden="true"></i>Resume</a>
+        <a href="{{ url_for('blogList') }}"><i class="fas fa-blog" aria-hidden="true"></i>Blog</a>
+        <a href="{{ url_for('publications') }}"><i class="fas fa-book-open" aria-hidden="true"></i> Publications</a>
+        <a href="{{ url_for('consulting') }}"><i class="fas fa-envelope" aria-hidden="true"></i> Contact</a>
     </nav>
 
     {% block site_header %}
