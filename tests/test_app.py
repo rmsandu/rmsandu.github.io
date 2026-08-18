@@ -7,6 +7,7 @@ from flask_frozen import Freezer
 import src.app as app_module
 from src.app import (
     app,
+    citation_key,
     filter_blog_posts_by_tag,
     format_date,
     get_blog_info,
@@ -179,6 +180,22 @@ def test_blog_post_flow():
     assert "Segmentation of Fine Facial Wrinkles with U-Net" in html
     assert "April 18, 2025" in html
     assert "Model architecture" in html
+
+
+def test_citation_key():
+    assert citation_key("2025-04-18-wrinkle-segmentation", date(2025, 4, 18)) == "sandu2025wrinklesegmentation"
+    assert citation_key("2026-08-18-multiview-lora", None) == "sandumultiviewlora"
+
+
+def test_blog_post_includes_citation():
+    response = app.test_client().get("/blog/2025-04-18-wrinkle-segmentation.html")
+    html = response.get_data(as_text=True)
+
+    assert response.status_code == 200
+    assert "Citation" in html
+    assert "Sandu, Raluca-Maria. (Apr 2025)" in html
+    assert "@article{sandu2025wrinklesegmentation," in html
+    assert 'author  = "Sandu, Raluca-Maria"' in html
 
 
 def test_publications_flow():

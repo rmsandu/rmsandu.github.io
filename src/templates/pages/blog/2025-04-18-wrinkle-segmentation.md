@@ -1,7 +1,7 @@
 ---
 date: 2025-04-18
 title: Segmentation of Fine Facial Wrinkles with U-Net
-subtitle: Segmenting wrinkles is still unsolved task with many applications
+subtitle: Pixel-wise wrinkle segmentation is still an unsolved task with many applications
 cover-img: img/young-old-wrinkles.png
 thumbnail-img: img/portrait_ai.png
 tags: [segmentation, machine learning, ai, deep learning, Unet]
@@ -24,7 +24,7 @@ tags: [segmentation, machine learning, ai, deep learning, Unet]
 Facial wrinkle analysis is essential for a range of applications, from cosmetic product evaluation to dermatological interventions, invasive or non-invasive. In the past, traditional methods for detecting fine lines on a human face often rely on classical image processing—think edge detection or thresholding. While useful as a baseline, these methods tend to struggle with varying lighting conditions, complex skin textures, and subtle wrinkles, or telling the difference between facial hair and a wrinkle (damn edges!.)
 After some literature research, I was surprised to discover that the classic U-Net, a popular deep learning architecture initially designed for biomedical image segmentation (e.g., isolating cells, organs, and more) still renders the best results for facial wrinkle segmentation. In this blog post, I’ll discuss if U-Net for automatic wrinkle segmentation is good enough to get a decent IoU & Dice score, lessons learned, and next tips.
 
-I documented my training and evaluation algorithm in a Github repository: [FFHQ-detect-face-wrinkles](https://github.com/rmsandu/FFHQ-detect-face-wrinkles), which now also hosts pretrained weights on the Hugging Face Hub, unit tests, and a CI pipeline — more on that in the [Demo](#demo) section below.
+**UPDATED 18.08.2026**: I documented my training and evaluation algorithm in a Github repository: [FFHQ-detect-face-wrinkles](https://github.com/rmsandu/FFHQ-detect-face-wrinkles), which now also hosts pretrained weights on the Hugging Face Hub, unit tests, and a CI pipeline — more on that in the [Demo](#demo) section below.
 
 <a id="background"></a>
 
@@ -74,7 +74,7 @@ The project leverages the [FFHQ-Wrinkle dataset](https://github.com/labhai/ffhq-
 
 I modified the **`face_masking.py`** to a new version of **`face_parsing_extraction.py`** using [BiSeNET](https://github.com/CoinCheung/BiSeNet) to crop faces given an input folder and provided face-parsed labels for the face images corresponding to the manual wrinkle labels as 512x512 numpy arrays, which were obtained using [face-parsing.PyTorch](https://github.com/zllrunning/face-parsing.PyTorch). This way the user can create new manual labels and generate new face-parsed images.
 
-**The pre-trained wrinkle weights are now hosted on the [Hugging Face Hub](https://huggingface.co/rmsandu/ffhq-wrinkle-unet) as SafeTensors and auto-download via `scripts/download_weights.py` — no more juggling Google Drive/Dropbox links.**
+**The pre-trained wrinkle weights are now hosted on the [Hugging Face Hub](https://huggingface.co/rmsandu/ffhq-wrinkle-unet) as SafeTensors and auto-download via `scripts/download_weights.py` — no more juggling Google Drive/Dropbox links yay.**
 
 <div class="grid is-col-min-7">
     <div class="cell">
@@ -211,7 +211,7 @@ In practice, my model’s IoU on the validation set ended up in the mid 0.3s (ar
 
 Finally, it’s worth noting that evaluating wrinkle segmentation is inherently a bit subjective – if my model predicts a wrinkle that the ground truth mask missed, is it truly a false positive or did the annotator just not mark that faint line? I’ve seen cases in the outputs where I honestly think the model found a real wrinkle that the label didn’t have. In a practical application, one might even intentionally bias the model to over-predict slightly, then have a human review the suggested wrinkles. That could be a semi-automated approach to eventually build an even bigger high-quality labeled dataset.
 
-Wrinkle segmentation is hard. It taught me to pay attention (literally, via attention mechanisms) to the little things, to never underestimate the impact of a good loss function, and to always be ready to improvise when the data is limited. If you made it this far, thanks for reading – now excuse me while I go apply some moisturizer and retinol; all this talk of wrinkles has reminded me to take better care of my skin!
+Wrinkle segmentation is hard. It taught me to pay attention (literally, via attention mechanisms) to the little things, to never underestimate the impact of a good loss function, and to always be ready to improvise with good old-fashioned data augmentation when the data is limited. If you made it this far, thanks for reading and now excuse me while I go apply some more spf, moisturizer and retinol!
 
 <a id="demo"></a>
 
@@ -239,4 +239,4 @@ The demo is also being migrated to a permanent [Hugging Face Space](https://hugg
 - [FFHQ-Wrinkle dataset](https://github.com/labhai/ffhq-wrinkle-dataset) by Moon et al. (2024).
 - [Kim et al.’s wrinkle dataset](https://github.com/jun01pd2015/wrinkle_dataset) (UNet++ paper).
 
-Funnily enough, the repo’s README now cites this very blog post back — a nice full-circle moment since it started as a write-up of the repo and now the repo points back at it.
+

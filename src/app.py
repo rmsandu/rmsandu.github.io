@@ -136,6 +136,12 @@ def search_tag(tag):
     )
 
 
+def citation_key(page_name, post_date):
+    slug = page_name[11:].replace("-", "")  # strip the leading "YYYY-MM-DD-"
+    year = post_date.year if post_date else ""
+    return f"sandu{year}{slug}"
+
+
 @app.route("/blog/<page_name>.html")
 def render_blog_page(page_name):
     path = os.path.join(BLOG_DIR, page_name + ".md")
@@ -152,6 +158,7 @@ def render_blog_page(page_name):
             tags=blog["tags"],
             content=blog["content"],
             page_title=page_name.replace("-", " ").title(),
+            citation_key=citation_key(page_name, blog["date"]),
         )
     else:
         return "Page not found", 404

@@ -56,6 +56,23 @@
         <div class="container blog-container">
             <div class="content blog-content">
                 {{ content | safe }}
+
+                <section class="citation">
+                    <h2>Citation</h2>
+                    <p>Cited as:</p>
+                    <blockquote class="citation-text">
+                        <p>Sandu, Raluca-Maria. ({{ date.strftime('%b %Y') if date else '' }}). {{ title }}. rmsandu.net. <a href="{{ canonical_url }}">{{ canonical_url }}</a></p>
+                    </blockquote>
+                    <p>Or</p>
+                    <pre class="citation-bibtex"><code>@article{{ '{' }}{{ citation_key }},
+  title   = "{{ title }}",
+  author  = "Sandu, Raluca-Maria",
+  journal = "rmsandu.net",
+  year    = "{{ date.year if date else '' }}",
+  month   = "{{ date.strftime('%b') if date else '' }}",
+  url     = "{{ canonical_url }}"
+{{ '}' }}</code></pre>
+                </section>
             </div>
         </div>
     </div>
