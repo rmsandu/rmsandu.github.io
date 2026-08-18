@@ -79,12 +79,12 @@ I modified the **`face_masking.py`** to a new version of **`face_parsing_extract
 <div class="grid is-col-min-7">
     <div class="cell">
         <figure class="image is-square">
-            <img src="/static/img/00001.png" alt="Original FFHQ face image before wrinkle-mask preprocessing" />
+            <img src="/static/img/00001.png" alt="Original FFHQ face image before wrinkle-mask preprocessing" loading="lazy" />
         </figure>
     </div>
     <div class="cell">
         <figure class="image is-square">
-            <img src="/static/img/00001_faceMask.png" alt="BiSeNet face-parsing mask used to crop the same face image" />
+            <img src="/static/img/00001_faceMask.png" alt="BiSeNet face-parsing mask used to crop the same face image" loading="lazy" />
         </figure>
     </div>
 </div>
@@ -110,7 +110,7 @@ Because wrinkles are so thin, one idea was to slightly dilate (thicken) the grou
 Here is the workflow for the face pre-processing:
 
 <figure class="image">
-    <img src="/static/img/workflow-unet.png" alt="Face pre-processing workflow diagram" />
+    <img src="/static/img/workflow-unet.png" alt="Face pre-processing workflow diagram" loading="lazy" />
 </figure>
 <figcaption>Face Pre-Processing Workflow</figcaption>
 
@@ -164,7 +164,7 @@ The evaluation code computes not only IoU but also precision, recall, F1, and AU
 | AMP / Mixed precision | Disabled                                           |
 
 <figure class="image">
-    <img src="/static/img/evaluation_unet_results.png" alt="Weights and Biases evaluation plots showing total loss and precision curves" />
+    <img src="/static/img/evaluation_unet_results.png" alt="Weights and Biases evaluation plots showing total loss and precision curves" loading="lazy" />
 </figure>
 <figcaption>Weights&Biases evaluation plots, total loss, precision</figcaption>
 <p></p>
@@ -176,13 +176,13 @@ In practice, my model’s IoU on the validation set ended up in the mid 0.3s (ar
 <div class="grid is-col-min-7">
     <div class="cell">
         <figure class="image is-square">
-            <img src="/static/img/Overlay_Image_4_Epoch_5_unet.png" alt="Predicted vs ground-truth wrinkle overlay at epoch 5" />
+            <img src="/static/img/Overlay_Image_4_Epoch_5_unet.png" alt="Predicted vs ground-truth wrinkle overlay at epoch 5" loading="lazy" />
         </figure>
         <figcaption>Epoch 5 Wrinkles Overlay, Green true labels, Red predicted labels</figcaption>
     </div>
     <div class="cell">
         <figure class="image is-square">
-            <img src="/static/img/Overlay_Image_4_Epoch_60_unet.png" alt="Predicted vs ground-truth wrinkle overlay at epoch 60" />
+            <img src="/static/img/Overlay_Image_4_Epoch_60_unet.png" alt="Predicted vs ground-truth wrinkle overlay at epoch 60" loading="lazy" />
         </figure>
          <figcaption>Epoch 60 Wrinkles Overlay, Green true labels, Red predicted labels</figcaption>
     </div>
@@ -228,7 +228,7 @@ python app.py
 The demo is also being migrated to a permanent [Hugging Face Space](https://huggingface.co/rmsandu/ffhq-wrinkle-unet) so you won’t need to run anything locally at all — check the repo for the current link.
 
 <figure class="image">
-    <img src="/static/img/demo_screenshot.png" alt="Gradio interface showing real-time wrinkle segmentation on a face photo" />
+    <img src="/static/img/demo_screenshot.png" alt="Gradio interface showing real-time wrinkle segmentation on a face photo" loading="lazy" />
 </figure>
 <figcaption>Gradio Interface for Real-time Wrinkle segmentation</figcaption>
 

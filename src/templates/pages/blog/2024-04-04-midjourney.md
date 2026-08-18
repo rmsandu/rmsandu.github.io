@@ -34,27 +34,27 @@ Here some images I generated using the following prompt `\prompt a photograph of
 <div class="grid  is-col-min-7">
     <div class="cell">
         <figure class="image is-square">
-            <img src="/static/img/uploads/album/Canon-Low-Angle perspective.jpg" alt="AI-generated deer photo simulating a Canon lens, low-angle perspective" />
+            <img src="/static/img/uploads/album/Canon-Low-Angle perspective.jpg" alt="AI-generated deer photo simulating a Canon lens, low-angle perspective" loading="lazy" />
         </figure>
     </div>
     <div class="cell">
         <figure class="image is-square">
-            <img src="/static/img/uploads/album/Canon.jpg" alt="AI-generated deer photo simulating a Canon lens" />
+            <img src="/static/img/uploads/album/Canon.jpg" alt="AI-generated deer photo simulating a Canon lens" loading="lazy" />
         </figure>
     </div>
     <div class="cell">
         <figure class="image is-square">
-            <img src="/static/img/uploads/album/Leica-Summicron.jpg" alt="AI-generated deer photo simulating a Leica Summicron lens" />
+            <img src="/static/img/uploads/album/Leica-Summicron.jpg" alt="AI-generated deer photo simulating a Leica Summicron lens" loading="lazy" />
         </figure>
     </div>
     <div class="cell">
         <figure class="image is-square">
-            <img src="/static/img/uploads/album/Leica.jpg" alt="AI-generated deer photo simulating a Leica lens" />
+            <img src="/static/img/uploads/album/Leica.jpg" alt="AI-generated deer photo simulating a Leica lens" loading="lazy" />
         </figure>
     </div>
     <div class="cell">
         <figure class="image is-square">
-            <img src="/static/img/uploads/album/Nikon.jpg" alt="AI-generated deer photo simulating a Nikon lens" />
+            <img src="/static/img/uploads/album/Nikon.jpg" alt="AI-generated deer photo simulating a Nikon lens" loading="lazy" />
         </figure>
     </div>
 </div>
@@ -66,27 +66,27 @@ Other photos of landscapes and animals I have generated:
 <div class="grid is-col-min-7">
     <div class="cell">
         <figure class="image is-square">
-            <img src="/static/img/uploads/realistic/Blue Footed Boobie.png" alt="AI-generated photo of a blue-footed booby" />
+            <img src="/static/img/uploads/realistic/Blue Footed Boobie.png" alt="AI-generated photo of a blue-footed booby" loading="lazy" />
         </figure>
     </div>
     <div class="cell">
         <figure class="image is-square">
-            <img src="/static/img/uploads/realistic/Lion Canon.png" alt="AI-generated photo of a lion simulating a Canon lens" />
+            <img src="/static/img/uploads/realistic/Lion Canon.png" alt="AI-generated photo of a lion simulating a Canon lens" loading="lazy" />
         </figure>
     </div>
     <div class="cell">
         <figure class="image is-square">
-            <img src="/static/img/uploads/realistic/Mountain Range.png" alt="AI-generated photo of a mountain range" />
+            <img src="/static/img/uploads/realistic/Mountain Range.png" alt="AI-generated photo of a mountain range" loading="lazy" />
         </figure>
     </div>
     <div class="cell">
         <figure class="image is-square">
-            <img src="/static/img/uploads/realistic/Mountains Spring.png" alt="AI-generated photo of mountains in spring" />
+            <img src="/static/img/uploads/realistic/Mountains Spring.png" alt="AI-generated photo of mountains in spring" loading="lazy" />
         </figure>
     </div>
     <div class="cell">
         <figure class="image is-square">
-            <img src="/static/img/uploads/realistic/Paraglider.png" alt="AI-generated photo of a paraglider over mountains" />
+            <img src="/static/img/uploads/realistic/Paraglider.png" alt="AI-generated photo of a paraglider over mountains" loading="lazy" />
         </figure>
     </div>
 </div>
