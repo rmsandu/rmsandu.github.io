@@ -4,6 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='img/favicon-32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='img/favicon-16.png') }}">
+    <link rel="apple-touch-icon" href="{{ url_for('static', filename='img/apple-touch-icon.png') }}">
+    <link rel="alternate" type="application/rss+xml" title="Raluca-Maria Sandu — Blog" href="{{ url_for('feed', _external=True) }}">
     <meta name="description" content="{% block meta_description %}Raluca-Maria Sandu is an AI/ML engineer and researcher based in Zurich, Switzerland.{% endblock %}">
     <link rel="canonical" href="{{ canonical_url }}">
 
@@ -26,6 +30,10 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/codehilite.css') }}">
     <title>{% block page_title %}Raluca-Maria Sandu{% endblock %}</title>
+
+    <!-- Cloudflare Web Analytics -->
+    <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "fe3aa52662974edc971cc97c933cae89"}'></script>
+    <!-- End Cloudflare Web Analytics -->
 </head>
 
 <body>

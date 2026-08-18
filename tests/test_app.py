@@ -246,6 +246,17 @@ def test_sitemap_and_robots():
     assert "sitemap.xml" in robots_txt
 
 
+def test_feed():
+    response = app.test_client().get("/feed.xml")
+    xml = response.get_data(as_text=True)
+
+    assert response.status_code == 200
+    assert response.mimetype == "application/rss+xml"
+    assert "<rss version=\"2.0\">" in xml
+    assert "Segmentation of Fine Facial Wrinkles with U-Net" in xml
+    assert "/blog/2025-04-18-wrinkle-segmentation.html" in xml
+
+
 def test_resume_page_removed():
     response = app.test_client().get("/resume.html")
 

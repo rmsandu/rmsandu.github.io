@@ -1,5 +1,6 @@
 import os
-from datetime import date, datetime
+from datetime import date, datetime, time
+from xml.sax.saxutils import escape
 
 from flask import Flask, render_template, request, url_for, Response
 import markdown
@@ -176,6 +177,35 @@ def sitemap():
     xml += [f"<url><loc>{url}</loc></url>" for url in urls]
     xml.append("</urlset>")
     return Response("\n".join(xml), mimetype="application/xml")
+
+
+@app.route("/feed.xml")
+def feed():
+    posts = list_all_blog_info()
+    items = []
+    for post in posts:
+        post_url = url_for("render_blog_page", page_name=post["filename"], _external=True)
+        pub_date = datetime.combine(post["date"] or date.today(), time()).strftime("%a, %d %b %Y %H:%M:%S GMT")
+        items.append(
+            "<item>"
+            f"<title>{escape(post['title'])}</title>"
+            f"<link>{post_url}</link>"
+            f"<guid>{post_url}</guid>"
+            f"<pubDate>{pub_date}</pubDate>"
+            f"<description>{escape(post['subtitle'])}</description>"
+            "</item>"
+        )
+    xml = (
+        '<?xml version="1.0" encoding="UTF-8"?>'
+        '<rss version="2.0"><channel>'
+        "<title>Raluca-Maria Sandu — Blog</title>"
+        f"<link>{url_for('blogList', _external=True)}</link>"
+        "<description>Notes on applied machine learning, computer vision, and generative AI.</description>"
+        "<language>en-us</language>"
+        + "".join(items)
+        + "</channel></rss>"
+    )
+    return Response(xml, mimetype="application/rss+xml")
 
 
 @app.route("/robots.txt")

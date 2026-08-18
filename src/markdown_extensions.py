@@ -18,6 +18,7 @@ class BulmaImageProcessor(ImageInlineProcessor):
         if src:
             el.set('src', url_for('static', filename=src))
             el.set('class', 'blog-image')
+            el.set('loading', 'lazy')
         
         figure = etree.Element('figure')
         figure.set('class', 'image')
