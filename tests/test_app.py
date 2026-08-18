@@ -201,6 +201,34 @@ def test_publications_flow():
     assert client.get("/static/Biomedica_Sandu_2015_Poster.pdf").status_code == 200
 
 
+def test_consulting_flow():
+    response = app.test_client().get("/consulting.html")
+    html = response.get_data(as_text=True)
+
+    assert response.status_code == 200
+    assert "Consulting" in html
+    assert "mailto:rmsan@duck.com" in html
+    assert "https://linkedin.com/in/rmsandu" in html
+
+
+def test_sitemap_and_robots():
+    client = app.test_client()
+
+    sitemap_response = client.get("/sitemap.xml")
+    sitemap_xml = sitemap_response.get_data(as_text=True)
+    assert sitemap_response.status_code == 200
+    assert sitemap_response.mimetype == "application/xml"
+    assert "<loc>" in sitemap_xml
+    assert "/consulting.html" in sitemap_xml
+    assert "/blog/2025-04-18-wrinkle-segmentation.html" in sitemap_xml
+
+    robots_response = client.get("/robots.txt")
+    robots_txt = robots_response.get_data(as_text=True)
+    assert robots_response.status_code == 200
+    assert "Sitemap:" in robots_txt
+    assert "sitemap.xml" in robots_txt
+
+
 def test_resume_page_removed():
     response = app.test_client().get("/resume.html")
 

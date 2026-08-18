@@ -1,7 +1,7 @@
 import os
 from datetime import date, datetime
 
-from flask import Flask, render_template
+from flask import Flask, render_template, request, url_for, Response
 import markdown
 import frontmatter
 import yaml
@@ -97,7 +97,10 @@ def format_date(value, format="%B %d, %Y"):
 
 @app.context_processor
 def inject_globals():
-    return {"current_year": datetime.now().year}
+    return {
+        "current_year": datetime.now().year,
+        "canonical_url": request.url_root.rstrip("/") + request.path,
+    }
 
 
 @app.route("/")
@@ -113,6 +116,11 @@ def index():
 @app.route("/publications.html")
 def publications():
     return render_template("pages/publications.html", data=load_yaml_data("publications.yaml"))
+
+
+@app.route("/consulting.html")
+def consulting():
+    return render_template("pages/consulting.html")
 
 
 @app.route("/blogList.html")
@@ -147,6 +155,31 @@ def render_blog_page(page_name):
         )
     else:
         return "Page not found", 404
+
+
+@app.route("/sitemap.xml")
+def sitemap():
+    static_pages = ["index", "publications", "consulting", "blogList"]
+    urls = [url_for(endpoint, _external=True) for endpoint in static_pages]
+    urls += [
+        url_for("render_blog_page", page_name=post["filename"], _external=True)
+        for post in list_all_blog_info()
+    ]
+    xml = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
+    xml += [f"<url><loc>{url}</loc></url>" for url in urls]
+    xml.append("</urlset>")
+    return Response("\n".join(xml), mimetype="application/xml")
+
+
+@app.route("/robots.txt")
+def robots():
+    lines = ["User-agent: *", "Allow: /", f"Sitemap: {url_for('sitemap', _external=True)}"]
+    return Response("\n".join(lines), mimetype="text/plain")
+
+
+@app.route("/CNAME")
+def cname():
+    return Response("rmsandu.net", mimetype="text/plain")
 
 
 if __name__ == "__main__":

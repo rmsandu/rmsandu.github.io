@@ -2,6 +2,7 @@ from flask_frozen import Freezer
 
 from src.app import app, list_all_blog_info
 
+app.config["FREEZER_BASE_URL"] = "https://rmsandu.net"
 freezer = Freezer(app)
 
 
