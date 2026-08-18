@@ -16,6 +16,21 @@
     --shadow-soft: 0 18px 45px rgba(18, 63, 42, 0.09);
 }
 
+// Bulma's `strong`/`b` and table `th` colors switch to a near-white gray
+// when the visitor's OS is in dark mode (prefers-color-scheme: dark), but
+// this site's background is always white, so that text became invisible.
+// Pin them to the site's own palette instead of Bulma's reactive default.
+strong,
+b {
+    color: var(--color-forest);
+}
+
+table th,
+.content table th,
+.content table thead th {
+    color: var(--color-forest);
+}
+
 html {
     background: var(--color-paper);
     scroll-behavior: smooth;
