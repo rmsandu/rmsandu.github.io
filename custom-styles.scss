@@ -6,9 +6,10 @@
     --color-forest-soft: #2f6b4f;
     --color-moss: #dceadd;
     --color-leaf: #eff7ef;
-    --color-coral: #c9432f; // darkened from #e96b5f for WCAG AA text contrast (was 3.12:1, now ~4.86:1)
-    --color-orange: #b35c00; // darkened from #e8913a for WCAG AA text contrast (was 2.46:1, now ~4.72:1)
-    --color-yellow: #f1c84b;
+    --color-coral: #9F2245;
+    --color-coral-hover: #FF868A;
+    --color-orange: #FF868A; // darkened from #e8913a for WCAG AA text contrast (was 2.46:1, now ~4.72:1)
+    --color-yellow: #D85A69;
     --color-border: #d8e5d8;
     --color-muted: #58735f;
     --font-body: "Inter", "SF Pro", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -61,16 +62,13 @@ select {
 }
 
 a {
-    color: var(--color-forest-soft);
-    text-decoration-line: underline;
-    text-decoration-color: rgba(201, 67, 47, 0.45);
-    text-decoration-thickness: 2px;
-    text-underline-offset: 0.22em;
+    color: var(--color-coral);
+    text-decoration: none;
 }
 
 a:hover,
 a:focus {
-    color: var(--color-coral);
+    color: var(--color-coral-hover);
 }
 
 a:focus-visible,
@@ -242,10 +240,6 @@ button:focus-visible {
     color: var(--color-muted);
 }
 
-.home-summary a {
-    color: var(--color-coral);
-}
-
 .credibility-tags,
 .tag-list {
     display: flex;
@@ -293,13 +287,16 @@ button:focus-visible {
 }
 
 .site-sidebar a {
-    background: var(--color-leaf);
-    border: 1px solid var(--color-border);
+    align-items: center;
+    background: var(--color-coral);
+    border: 1px solid var(--color-coral);
     border-radius: 999px;
-    color: var(--color-forest);
+    color: #fff;
+    display: inline-flex;
     flex-shrink: 0;
     font-size: 1.23rem; // 50% larger than the original 0.82rem
     font-weight: 800;
+    gap: 0.9rem;
     padding: 0.6rem 1.2rem; // 50% larger than the original 0.4rem 0.8rem
     text-decoration: none;
     white-space: nowrap;
@@ -307,8 +304,9 @@ button:focus-visible {
 
 .site-sidebar a:hover,
 .site-sidebar a:focus {
-    background: var(--color-yellow);
-    border-color: var(--color-yellow);
+    background: var(--color-coral-hover);
+    border-color: var(--color-coral-hover);
+    color: var(--color-forest);
 }
 
 @media (min-width: 1024px) {
