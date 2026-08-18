@@ -9,7 +9,6 @@
     <div class="container">
         <p class="eyebrow"></p>
         <h1>AI/ML Engineering &amp; Consulting</h1>
-        <p>I help teams design, build, and ship applied AI/machine learning systems from supervised and unsupervised machine learning algorithms to generative AI and foundation models. Available for fractional, contract, and advisory engagements.</p>
 
         <div class="credibility-tags" aria-label="areas of expertise">
             <span>Machine Learning</span>
@@ -25,58 +24,68 @@
 
 <section class="section">
     <div class="container home-container">
-        <div class="section-heading">
+        <div class="contact-card">
+            <div class="contact-card-icon"><i class="fas fa-paper-plane" aria-hidden="true"></i></div>
             <p class="eyebrow">Get in touch</p>
             <h2>Let's talk about your project</h2>
-            <p>Looking for a senior AI/ML applied engineer to help with your project? Whether you need assistance with a specific task or an end-to-end solution, I'm here to help. Reach out with a short message of what you're working on and I'll see how I can support.</p>
+            <p class="contact-lead">Looking for a senior AI/ML applied engineer to help with your project? Whether you need assistance with a specific task or an end-to-end solution, I'm here to help. Reach out to <a id="consulting-email-link" href="#" rel="nofollow"><span id="consulting-email-text">Email me</span></a> with a short message and I'll see how I can support.</p>
+
+            <div class="contact-links" aria-label="contact links">
+                <a href="https://linkedin.com/in/rmsandu" target="_blank" rel="noopener"><i class="fab fa-linkedin" aria-hidden="true"></i> Connect on LinkedIn</a>
+            </div>
         </div>
 
-        <div class="profile-actions" aria-label="contact links">
-            <a class="text-link" href="mailto:rmsan@duck.com">Email Me</a>
-            <a class="text-link" href="https://linkedin.com/in/rmsandu">Connect on LinkedIn</a>
-        </div>
+        <script>
+            (function () {
+                var user = "rmsan";
+                var domain = "duck.com";
+                var link = document.getElementById("consulting-email-link");
+                var text = document.getElementById("consulting-email-text");
+                if (link && text) {
+                    link.href = "mailto:" + user + "@" + domain;
+                    text.textContent = user + "@" + domain;
+                }
+            })();
+        </script>
     </div>
 </section>
 
 <section class="section">
-    <div class="container publication-list">
-        <article class="publication-item">
-            <div>
-                <p class="publication-meta">Service</p>
-                <h2>Computer Vision &amp; Multi-Modal Systems</h2>
-                <p>Designing and shipping production-grade segmentation and object detection pipelines — from data preparation and model architecture to evaluation (facial wrinkles, skin lesions, medical imaging, drones, quality inspection in manufacturing).</p>
-            </div>
+    <div class="container service-grid">
+        <article class="service-card">
+            <div class="service-icon"><i class="fas fa-eye" aria-hidden="true"></i></div>
+            <h2>Computer Vision &amp; Multi-Modal Systems</h2>
+            <p>Designing and shipping production-grade segmentation and object detection pipelines — from data preparation and model architecture to evaluation (facial wrinkles, skin lesions, medical imaging, drones, quality inspection in manufacturing).</p>
         </article>
 
-        <article class="publication-item">
-            <div>
-                <p class="publication-meta">Service</p>
-                <h2>Generative AI &amp; Diffusion Models</h2>
-                <p>Fine-tuning and deploying and evaluating vision models plus diffusion models (LoRA, Stable Diffusion, FLUX) for real product use cases. Practical guidance on when GenAI is the right tool, and when it isn't.</p>
-            </div>
+        <article class="service-card">
+            <div class="service-icon"><i class="fas fa-magic" aria-hidden="true"></i></div>
+            <h2>Generative AI &amp; Diffusion Models</h2>
+            <p>Fine-tuning and deploying and evaluating vision models plus diffusion models (LoRA, Stable Diffusion, FLUX) for real product use cases. Practical guidance on when GenAI is the right tool, and when it isn't.</p>
         </article>
 
-        <article class="publication-item">
-            <div>
-                <p class="publication-meta">Service</p>
-                <h2>Applied ML Engineering &amp; Cloud Deployment</h2>
-                <p>Over 20 years of coding experience (started coding at 15 years old without AI assistance) and hands-on leadership of technical teams delivering AI/ML solutions across industrial projects. Practical guidance on deploying and maintaining ML systems at scale (AWS Cloud). </p>
-            </div>
+        <article class="service-card">
+            <div class="service-icon"><i class="fas fa-cloud" aria-hidden="true"></i></div>
+            <h2>Applied ML Engineering &amp; Cloud Deployment</h2>
+            <p>Over 20 years of coding experience (started coding at 15 years old without AI assistance) and hands-on leadership of technical teams delivering AI/ML solutions across industrial projects. Practical guidance on deploying and maintaining ML systems at scale (AWS Cloud).</p>
         </article>
 
-        <article class="publication-item">
-            <div>
-                <p class="publication-meta">Service</p>
-                <h2>Medical &amp; Scientific Imaging</h2>
-                <p>Quantitative CT/MRI and ultrasound image analysis and image processing grounded in a PhD in Biomedical Engineering and clinical research across European hospitals, including work that contributed to a commercial medical device product.</p>
-            </div>
+        <article class="service-card">
+            <div class="service-icon"><i class="fas fa-heartbeat" aria-hidden="true"></i></div>
+            <h2>Medical &amp; Scientific Imaging</h2>
+            <p>Quantitative CT/MRI and ultrasound image analysis and image processing grounded in a PhD in Biomedical Engineering and clinical research across European hospitals, including work that contributed to a commercial medical device product.</p>
         </article>
-        <article class="publication-item">
-            <div>
-                <p class="publication-meta">Service</p>
-                <h2>Public Speaking &amp; Workshop Facilitation</h2>
-                <p>Over 20 presentations delivered to audiences ranging from medical conferences to industry events, including <a href="https://www.linkedin.com/posts/share-7233756589499858944-mOqr/?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAAAopCkkBTWnKUEffzwUAkoeI6et5Ea_nbcE" target="_blank" rel="noopener">AWS Summit 2024</a> and a <a href="https://www.uniaktuell.unibe.ch/2018/maurice_e_mueller_turned_the_world_of_surgery_upside_down/index_eng.html" target="_blank" rel="noopener">special event at the University of Bern</a>. Available for conference talks, technical workshops, and panel discussions on AI/ML.</p>
-            </div>
+
+        <article class="service-card">
+            <div class="service-icon"><i class="fas fa-chalkboard-teacher" aria-hidden="true"></i></div>
+            <h2>Public Speaking &amp; Workshop Facilitation</h2>
+            <p>Over 20 presentations delivered to audiences ranging from medical conferences to industry events, including <a href="https://www.linkedin.com/posts/share-7233756589499858944-mOqr/?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAAAopCkkBTWnKUEffzwUAkoeI6et5Ea_nbcE" target="_blank" rel="noopener">AWS Summit 2024</a> and a <a href="https://www.uniaktuell.unibe.ch/2018/maurice_e_mueller_turned_the_world_of_surgery_upside_down/index_eng.html" target="_blank" rel="noopener">special event at the University of Bern</a>. Available for conference talks, technical workshops, and panel discussions on AI/ML.</p>
+        </article>
+
+        <article class="service-card">
+            <div class="service-icon"><i class="fas fa-file-signature" aria-hidden="true"></i></div>
+            <h2>Research &amp; Publication Reviewer</h2>
+            <p>Literature research and review, plus writing or reviewing scientific articles on request — grounded in a PhD and a track record of peer-reviewed publications in biomedical engineering and medical imaging.</p>
         </article>
     </div>
 </section>

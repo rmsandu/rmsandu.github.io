@@ -189,6 +189,91 @@ button:focus-visible {
     justify-content: center;
 }
 
+.contact-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    justify-content: center;
+    margin-top: 1.2rem;
+}
+
+.contact-links a {
+    font-size: 1.05rem;
+    font-weight: 800;
+}
+
+.contact-card {
+    background: var(--color-leaf);
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    padding: 3rem 2rem;
+    text-align: center;
+}
+
+.contact-card-icon {
+    align-items: center;
+    background: var(--color-paper);
+    border: 1px solid var(--color-border);
+    border-radius: 50%;
+    color: var(--color-coral);
+    display: inline-flex;
+    font-size: 1.5rem;
+    height: 3.6rem;
+    justify-content: center;
+    margin-bottom: 1rem;
+    width: 3.6rem;
+}
+
+.contact-card .eyebrow {
+    justify-content: center;
+}
+
+.contact-card h2 {
+    color: var(--color-forest);
+    font-family: var(--font-display);
+    font-size: clamp(1.7rem, 4vw, 2.4rem);
+    margin: 0.2rem 0 0.8rem;
+}
+
+.contact-card .contact-lead {
+    margin: 0 auto;
+    max-width: 640px;
+}
+
+.service-grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.service-card {
+    background: var(--color-paper);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 1.6rem;
+    transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+
+.service-card:hover,
+.service-card:focus-within {
+    border-color: var(--color-coral);
+    box-shadow: var(--shadow-soft);
+    transform: translateY(-3px);
+}
+
+.service-icon {
+    align-items: center;
+    background: var(--color-leaf);
+    border-radius: 50%;
+    color: var(--color-forest-soft);
+    display: inline-flex;
+    font-size: 1.2rem;
+    height: 2.8rem;
+    justify-content: center;
+    margin-bottom: 0.9rem;
+    width: 2.8rem;
+}
+
 .contact-icon {
     align-items: center;
     background: var(--color-paper);
@@ -288,8 +373,8 @@ button:focus-visible {
 
 .site-sidebar a {
     align-items: center;
-    background: var(--color-coral);
-    border: 1px solid var(--color-coral);
+    background: var(--color-forest-soft);
+    border: 1px solid var(--color-forest-soft);
     border-radius: 999px;
     color: #fff;
     display: inline-flex;
@@ -304,9 +389,9 @@ button:focus-visible {
 
 .site-sidebar a:hover,
 .site-sidebar a:focus {
-    background: var(--color-coral-hover);
-    border-color: var(--color-coral-hover);
-    color: var(--color-forest);
+    background: var(--color-forest);
+    border-color: var(--color-forest);
+    color: #fff;
 }
 
 @media (min-width: 1024px) {
@@ -342,6 +427,11 @@ button:focus-visible {
 .page-intro p:not(.eyebrow) {
     color: var(--color-muted);
     max-width: 680px;
+}
+
+.contact-lead {
+    font-size: 1.3rem;
+    line-height: 1.6;
 }
 
 .eyebrow {
@@ -416,6 +506,15 @@ button:focus-visible {
 .publication-item h2,
 .post-card h2 {
     color: var(--color-forest);
+    font-size: 1.12rem;
+    font-weight: 800;
+    letter-spacing: 0;
+    line-height: 1.25;
+    margin-bottom: 0.35rem;
+}
+
+.service-card h2 {
+    color: var(--color-coral);
     font-size: 1.12rem;
     font-weight: 800;
     letter-spacing: 0;
