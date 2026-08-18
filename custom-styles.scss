@@ -590,6 +590,37 @@ button:focus-visible {
     overflow-x: auto;
 }
 
+.citation {
+    border-top: 1px solid var(--color-border);
+    margin-top: 3rem;
+    padding-top: 2rem;
+}
+
+// Higher specificity than Bulma's `.content blockquote` (which pulls its
+// background from a dark-mode-reactive variable) so this reliably wins.
+.blog-content .citation-text {
+    background: var(--color-leaf);
+    border-left: 3px solid var(--color-forest-soft);
+    border-radius: 4px;
+    color: var(--color-forest);
+    margin: 1rem 0;
+    padding: 0.9rem 1.2rem;
+}
+
+.citation-text p {
+    margin: 0;
+}
+
+.citation-bibtex {
+    background: #f8f8f8;
+    border-radius: 8px;
+    color: var(--color-forest); // Bulma's pre/code color is dark-mode-reactive; pin it
+    font-size: 0.88rem;
+    margin: 1rem 0;
+    overflow-x: auto;
+    padding: 1rem 1.2rem;
+}
+
 .site-footer {
     background: var(--color-leaf);
     border-top: 1px solid var(--color-border);
