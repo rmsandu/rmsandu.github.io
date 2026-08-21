@@ -8,7 +8,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='img/favicon-16.png') }}">
     <link rel="apple-touch-icon" href="{{ url_for('static', filename='img/apple-touch-icon.png') }}">
     <link rel="alternate" type="application/rss+xml" title="Raluca-Maria Sandu — Blog" href="{{ url_for('feed', _external=True) }}">
-    <meta name="description" content="{% block meta_description %}Raluca-Maria Sandu is an AI/ML engineer and researcher based in Zurich, Switzerland.{% endblock %}">
+    <meta name="description" content="{% block meta_description %}Raluca-Maria Sandu, PhD, is an AI/ML engineer and researcher based in Zurich, Switzerland.{% endblock %}">
     <link rel="canonical" href="{{ canonical_url }}">
 
     <meta property="og:type" content="{% block og_type %}website{% endblock %}">
@@ -44,7 +44,7 @@
         <a href="{{ url_for('index') }}#timeline"><i class="fas fa-file-alt" aria-hidden="true"></i>Resume</a>
         <a href="{{ url_for('blogList') }}"><i class="fas fa-blog" aria-hidden="true"></i>Blog</a>
         <a href="{{ url_for('publications') }}"><i class="fas fa-book-open" aria-hidden="true"></i> Publications</a>
-        <a href="{{ url_for('consulting') }}"><i class="fas fa-envelope" aria-hidden="true"></i> Contact</a>
+        <a href="{{ url_for('consulting') }}"><i class="fas fa-envelope" aria-hidden="true"></i> Services</a>
     </nav>
 
     {% block site_header %}
