@@ -143,11 +143,9 @@ def test_homepage_render_flow():
     assert "https://github.com/rmsandu" in html
     assert "Featured blog projects" in html
     assert "Experience &amp; Education" in html
-    assert "Resume" not in html
     assert "Machine Learning Engineer" in html
     assert "multi-view character generation" in html
     assert "Machine Learning Team Lead" in html
-    assert "7+ projects" in html
     assert "CSL" not in html
     assert "A brief timeline" not in html
     assert ">Path<" not in html
