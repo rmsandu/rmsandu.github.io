@@ -1,8 +1,8 @@
 timeline:
-  - date: "2025-present"
+  - date: "2025"
     type: "work"
     title: "Machine Learning Engineer | Stealth AI Start-up"
-    summary: "Fine-tuned a Flux diffusion model with LoRA for multi-view character generation and built animation-pipeline components for shot reuse, scene consistency and model evaluation."
+    summary: "Evaluated AI models for multi-view character generation and built animation-pipeline components for shot reuse, scene consistency and model evaluation."
 
   - date: "2022-2025"
     type: "work"
