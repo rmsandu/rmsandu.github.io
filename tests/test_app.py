@@ -139,13 +139,12 @@ def test_homepage_render_flow():
 
     assert response.status_code == 200
     assert "Raluca-Maria Sandu" in html
-    assert "rmsan@duck.com" in html
+    assert "raluca.sandu91@icloud.com" in html
     assert "https://github.com/rmsandu" in html
-    assert "Featured blog projects" in html
-    assert "Experience &amp; Education" in html
-    assert "Machine Learning Engineer" in html
-    assert "multi-view character generation" in html
-    assert "Machine Learning Team Lead" in html
+    assert "Bring me the ambiguous AI problem." in html
+    assert "Does any of this sound familiar?" in html
+    assert "Understand &rarr; Plan &rarr; Build" in html
+    assert "Selected writing" in html
     assert "CSL" not in html
     assert "A brief timeline" not in html
     assert ">Path<" not in html
@@ -222,8 +221,24 @@ def test_consulting_flow():
 
     assert response.status_code == 200
     assert "Consulting" in html
-    assert "mailto:rmsan@duck.com" in html
+    assert "mailto:raluca.sandu91@icloud.com" in html
     assert "https://linkedin.com/in/rmsandu" in html
+    assert "How a collaboration usually runs" in html
+    assert "Experience &amp; Education" not in html
+
+
+def test_about_flow():
+    response = app.test_client().get("/about.html")
+    html = response.get_data(as_text=True)
+
+    assert response.status_code == 200
+    assert "About Me" in html
+    assert "applied AI/ML engineer and technical problem solver" in html
+    assert "liver-cancer imaging research" in html
+    assert "Experience &amp; Education" in html
+    assert "Machine Learning Engineer" in html
+    assert "multi-view character generation" in html
+    assert "Machine Learning Team Lead" in html
 
 
 def test_sitemap_and_robots():
@@ -235,6 +250,7 @@ def test_sitemap_and_robots():
     assert sitemap_response.mimetype == "application/xml"
     assert "<loc>" in sitemap_xml
     assert "/consulting.html" in sitemap_xml
+    assert "/about.html" in sitemap_xml
     assert "/blog/2025-04-18-wrinkle-segmentation.html" in sitemap_xml
 
     robots_response = client.get("/robots.txt")
@@ -276,6 +292,7 @@ def test_static_freeze_flow(tmp_path):
     freezer.freeze()
 
     assert (tmp_path / "index.html").exists()
+    assert (tmp_path / "about.html").exists()
     assert (tmp_path / "blogList.html").exists()
     assert (tmp_path / "publications.html").exists()
     assert not (tmp_path / "resume.html").exists()

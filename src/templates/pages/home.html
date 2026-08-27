@@ -1,7 +1,5 @@
 {% extends "base.jinja" %}
 
-{% block site_header %}{% endblock %}
-
 {% block meta_description %}{{ home.profile.name }} is an AI/ML engineer and researcher in Zurich, Switzerland, working on computer vision, generative AI, and medical imaging.{% endblock %}
 
 {% block structured_data %}
@@ -26,90 +24,101 @@
 <section class="home-hero section" aria-labelledby="home-title">
     <div class="container home-container">
         <div class="profile-shell">
-            <figure class="profile-portrait">
-                <img src="{{ url_for('static', filename=home.profile.portrait) }}" alt="Portrait of Raluca-Maria Sandu">
-            </figure>
+            <div class="home-hero-content">
+                <p class="eyebrow">{{ home.hero.eyebrow }}</p>
+                <h1 id="home-title" class="home-title">{{ home.hero.heading }}</h1>
+                <p class="home-summary">{{ home.hero.intro }}</p>
+                <p class="home-summary is-personal">{{ home.hero.secondary }}</p>
 
-            <div class="home-contact" aria-label="Primary contact links">
-                <a class="contact-icon" href="mailto:{{ home.profile.email }}" aria-label="Email Raluca">
-                    <i class="fas fa-envelope" aria-hidden="true"></i>
-                </a>
-                <a class="contact-icon" href="{{ home.profile.linkedin }}" aria-label="Raluca on LinkedIn">
-                    <i class="fab fa-linkedin-in" aria-hidden="true"></i>
-                </a>
-                <a class="contact-icon" href="{{ home.profile.github }}" aria-label="Raluca on GitHub">
-                    <i class="fab fa-github" aria-hidden="true"></i>
-                </a>
-                <a class="contact-icon" href="{{ home.profile.scholar }}" aria-label="Raluca on Google Scholar">
-                    <i class="fas fa-graduation-cap" aria-hidden="true"></i>
-                </a>
-                <a class="contact-icon" href="{{ url_for('feed') }}" aria-label="Subscribe via RSS">
-                    <i class="fas fa-rss" aria-hidden="true"></i>
-                </a>
+                <div class="home-cta-row">
+                    <a class="button-link" href="mailto:{{ home.profile.email }}">Discuss a problem</a>
+                    <a class="link-underline" href="#writing">See selected work &rarr;</a>
+                </div>
             </div>
 
-            <h1 id="home-title" class="home-title">{{ home.profile.name }}</h1>
-            <p class="home-role">{{ home.profile.role }} &middot; {{ home.profile.location }}</p>
-            <p class="home-summary">
-                {% if home.profile.summary is string %}
-                {{ home.profile.summary }}
-                {% else %}
-                {% for segment in home.profile.summary %}
-                {% if segment.url %}
-                <a href="{{ segment.url }}">{{ segment.text }}</a>
-                {% else %}
-                {{ segment.text }}
-                {% endif %}
-                {% endfor %}
-                {% endif %}
-            </p>
-            {% if home.profile.personal %}
-            <p class="home-summary is-personal">{{ home.profile.personal }}</p>
-            {% endif %}
+            <figure class="home-hero-figure">
+                <div class="profile-portrait-frame">
+                    <div class="profile-portrait">
+                        <img src="{{ url_for('static', filename=home.profile.portrait) }}" alt="Portrait of Raluca-Maria Sandu">
+                    </div>
+                </div>
+                <figcaption class="profile-caption">
+                    <span class="name">{{ home.profile.name }}</span>
+                    <span class="role-line">{{ home.hero.caption_role }}</span>
+                </figcaption>
+            </figure>
         </div>
     </div>
 </section>
 
-<section class="section timeline-section" id="timeline" aria-labelledby="timeline-title">
+<section class="section problems-section" aria-labelledby="problems-title">
     <div class="container home-container">
         <div class="section-heading">
-            <h2 id="timeline-title">Experience &amp; Education</h2>
+            <p class="eyebrow">The starting point</p>
+            <h2 id="problems-title">Does any of this sound familiar?</h2>
         </div>
 
-        <div class="timeline-list">
-            {% for item in timeline %}
-            <article class="timeline-item">
-                <div class="timeline-icon">
-                    {% if item.logo %}
-                    <img src="{{ url_for('static', filename=item.logo) }}" alt="{{ item.logo_alt }}" loading="lazy" onerror="this.remove()">
-                    {% endif %}
-                    {% if item.type == 'education' %}
-                    <i class="fas fa-graduation-cap" aria-hidden="true"></i>
-                    {% else %}
-                    <i class="fas fa-tools" aria-hidden="true"></i>
-                    {% endif %}
-                </div>
-                <div>
-                    <p class="timeline-date">{{ item.date }}</p>
-                    <h3>{{ item.title }}</h3>
-                    <p>{{ item.summary }}</p>
-                </div>
+        <div class="problem-list">
+            {% for problem in home.problems %}
+            <article class="problem-item">
+                <span class="problem-bullet" aria-hidden="true">&bull;</span>
+                <blockquote class="problem-quote">&ldquo;{{ problem.quote }}&rdquo;</blockquote>
+                <p class="problem-body">{{ problem.body }}</p>
             </article>
             {% endfor %}
         </div>
     </div>
 </section>
 
-<section class="section projects-section" id="projects" aria-labelledby="projects-title">
-    <div class="container">
-        <div class="section-heading">
-            <p class="eyebrow">Recent work</p>
-            <h2 id="projects-title">Featured blog projects</h2>
+<section class="section how-i-help-section" aria-labelledby="how-i-help-title">
+    <div class="container home-container">
+        <div class="how-i-help-heading">
+            <div class="section-heading">
+                <p class="eyebrow">How I help</p>
+                <h2 id="how-i-help-title">Understand &rarr; Plan &rarr; Build</h2>
+            </div>
+            <a class="link-underline" href="{{ url_for('consulting') }}">More on how I work &rarr;</a>
         </div>
 
-        {% with blogPosts=blogPosts[:4] %}
-        {% include 'partials/_blogList.jinja' %}
-        {% endwith %}
+        <ol class="how-i-help-list">
+            {% for step in home.how_i_help %}
+            <li class="how-i-help-item">
+                <div class="how-i-help-step-label">
+                    <span class="how-i-help-badge">{{ loop.index }}</span>
+                    <span class="eyebrow">{{ step.step }}</span>
+                </div>
+                <h3>{{ step.title }}</h3>
+                <p>{{ step.body }}</p>
+            </li>
+            {% endfor %}
+        </ol>
+    </div>
+</section>
+
+<section class="section writing-section" id="writing" aria-labelledby="writing-title">
+    <div class="container home-container">
+        <div class="writing-heading">
+            <div class="section-heading">
+                <p class="eyebrow">How I work and think</p>
+                <h2 id="writing-title">Selected writing</h2>
+            </div>
+            <div class="writing-links">
+                <a class="link-underline" href="{{ url_for('blogList') }}">All posts &rarr;</a>
+                <a class="link-underline" href="{{ url_for('publications') }}">Publications &rarr;</a>
+            </div>
+        </div>
+
+        <div class="writing-list">
+            {% for post in blogPosts[:3] %}
+            <article class="writing-item">
+                <p class="writing-date">{{ post.date | format_date }}</p>
+                <div>
+                    <h3><a href="{{ url_for('render_blog_page', page_name=post.filename) }}">{{ post.title | striptags }}</a></h3>
+                    <p>{{ post.subtitle | striptags }}</p>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
     </div>
 </section>
 {% endblock %}

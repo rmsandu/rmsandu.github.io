@@ -101,6 +101,7 @@ def inject_globals():
     return {
         "current_year": datetime.now().year,
         "canonical_url": request.url_root.rstrip("/") + request.path,
+        "site_email": load_yaml_data("home.yaml")["profile"]["email"],
     }
 
 
@@ -109,7 +110,6 @@ def index():
     return render_template(
         "pages/home.html",
         home=load_yaml_data("home.yaml"),
-        timeline=load_yaml_data("timeline.yaml").get("timeline", []),
         blogPosts=list_all_blog_info(),
     )
 
@@ -122,6 +122,15 @@ def publications():
 @app.route("/consulting.html")
 def consulting():
     return render_template("pages/consulting.html")
+
+
+@app.route("/about.html")
+def about():
+    return render_template(
+        "pages/about.html",
+        about=load_yaml_data("about.yaml"),
+        timeline=load_yaml_data("timeline.yaml").get("timeline", []),
+    )
 
 
 @app.route("/blogList.html")
@@ -167,7 +176,7 @@ def render_blog_page(page_name):
 
 @app.route("/sitemap.xml")
 def sitemap():
-    static_pages = ["index", "publications", "consulting", "blogList"]
+    static_pages = ["index", "about", "publications", "consulting", "blogList"]
     urls = [url_for(endpoint, _external=True) for endpoint in static_pages]
     urls += [
         url_for("render_blog_page", page_name=post["filename"], _external=True)

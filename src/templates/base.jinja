@@ -39,31 +39,20 @@
 <body>
     <a class="skip-link" href="#main-content">Skip to content</a>
 
-    <nav class="site-sidebar" aria-label="page sections">
-        <a href="{{ url_for('index') }}"><i class="fas fa-home" aria-hidden="true"></i>Home</a>
-        <a href="{{ url_for('index') }}#timeline"><i class="fas fa-file-alt" aria-hidden="true"></i>Resume</a>
-        <a href="{{ url_for('blogList') }}"><i class="fas fa-blog" aria-hidden="true"></i>Blog</a>
-        <a href="{{ url_for('publications') }}"><i class="fas fa-book-open" aria-hidden="true"></i> Publications</a>
-        <a href="{{ url_for('consulting') }}"><i class="fas fa-envelope" aria-hidden="true"></i> Services</a>
-    </nav>
-
     {% block site_header %}
     <header class="site-header">
-        <nav class="site-nav" aria-label="main navigation">
+        <nav class="site-nav" aria-label="Main">
             <a class="site-brand" href="{{ url_for('index') }}">Raluca-Maria Sandu</a>
 
-            <button class="navbar-burger site-menu-button" type="button" aria-label="menu" aria-expanded="false"
-                data-target="navbarBasicExample">
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-            </button>
-
-            <div id="navbarBasicExample" class="site-nav-links navbar-menu">
-                <a href="{{ url_for('blogList') }}">Blog</a>
-                <a href="{{ url_for('publications') }}">Publications</a>
-                <a href="{{ url_for('consulting') }}">Consulting</a>
+            <div class="site-nav-right">
+                <div class="site-nav-links">
+                    <a class="{{ 'is-active' if request.endpoint == 'index' }}" href="{{ url_for('index') }}">Home</a>
+                    <a class="{{ 'is-active' if request.endpoint == 'about' }}" href="{{ url_for('about') }}">About</a>
+                    <a class="{{ 'is-active' if request.endpoint == 'blogList' }}" href="{{ url_for('blogList') }}">Writing</a>
+                    <a class="{{ 'is-active' if request.endpoint == 'publications' }}" href="{{ url_for('publications') }}">Research</a>
+                    <a class="{{ 'is-active' if request.endpoint == 'consulting' }}" href="{{ url_for('consulting') }}">Services</a>
+                </div>
+                <a class="site-nav-cta" href="mailto:{{ site_email }}">Hire me</a>
             </div>
         </nav>
     </header>
@@ -77,8 +66,6 @@
     <footer class="footer site-footer">
         {% include 'partials/_footer.jinja' %}
     </footer>
-
-    <script src="{{ url_for('static', filename='js/bulma.js') }}"></script>
 </body>
 
 </html>

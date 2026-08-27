@@ -13,7 +13,7 @@ The homepage should immediately show:
 - Name: Raluca-Maria Sandu
 - Short summary: AI/ML engineer and researcher based in Zurich, focused on computer vision, multimodal systems, medical imaging, and practical generative AI.
 - Contact details at the top of the page as compact icons:
-  - Email: rmsan@duck.com
+  - Email: raluca.sandu91@icloud.com
   - GitHub: https://github.com/rmsandu
   - LinkedIn: https://linkedin.com/in/rmsandu
   - Google Scholar: https://scholar.google.com/citations?user=5qskcz0AAAAJ

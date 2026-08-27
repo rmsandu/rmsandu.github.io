@@ -1,0 +1,51 @@
+{% extends "base.jinja" %}
+
+{% block page_title %}About | Raluca-Maria Sandu{% endblock %}
+
+{% block meta_description %}About Raluca-Maria Sandu &mdash; who she is, her motivation, and her background in applied AI/ML engineering.{% endblock %}
+
+{% block main %}
+<section class="section page-intro">
+    <div class="container home-container">
+        <p class="eyebrow">{{ about.eyebrow }}</p>
+        <h1>{{ about.heading }}</h1>
+
+        <div class="about-bio">
+            {% for paragraph in about.bio %}
+            <p>{{ paragraph }}</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="section timeline-section" aria-labelledby="background-title">
+    <div class="container home-container">
+        <div class="section-heading">
+            <p class="eyebrow">Background</p>
+            <h2 id="background-title">Experience &amp; Education</h2>
+        </div>
+
+        <div class="timeline-list">
+            {% for item in timeline %}
+            <article class="timeline-item timeline-item--{{ item.type }}">
+                <div class="timeline-icon">
+                    {% if item.logo %}
+                    <img src="{{ url_for('static', filename=item.logo) }}" alt="{{ item.logo_alt }}" loading="lazy" onerror="this.remove()">
+                    {% endif %}
+                    {% if item.type == 'education' %}
+                    <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+                    {% else %}
+                    <i class="fas fa-tools" aria-hidden="true"></i>
+                    {% endif %}
+                </div>
+                <div>
+                    <p class="timeline-date">{{ item.date }}</p>
+                    <h3>{{ item.title }}</h3>
+                    <p>{{ item.summary }}</p>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
