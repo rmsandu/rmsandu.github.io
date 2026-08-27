@@ -24,29 +24,16 @@
 
 <section class="section">
     <div class="container home-container">
-        <div class="contact-card">
-            <div class="contact-card-icon"><i class="fas fa-paper-plane" aria-hidden="true"></i></div>
+        <div class="forest-panel">
             <p class="eyebrow">Get in touch</p>
             <h2>Let's talk about your project</h2>
-            <p class="contact-lead">Looking for a senior AI/ML applied engineer to help with your project? Whether you need assistance with a specific task or an end-to-end solution, I'm here to help. Reach out to <a id="consulting-email-link" href="#" rel="nofollow"><span id="consulting-email-text">Email me</span></a> with a short message and I'll see how I can support.</p>
+            <p>The problem, the data you have, and your timeline &mdash; that's enough to start.</p>
 
-            <div class="contact-links" aria-label="contact links">
-                <a href="https://linkedin.com/in/rmsandu" target="_blank" rel="noopener"><i class="fab fa-linkedin" aria-hidden="true"></i> Connect on LinkedIn</a>
+            <div class="home-cta-row">
+                <a class="button-pill-light" href="mailto:{{ site_email }}">Email me</a>
+                <a class="button-pill-outline" href="https://linkedin.com/in/rmsandu" target="_blank" rel="noopener">Connect on LinkedIn</a>
             </div>
         </div>
-
-        <script>
-            (function () {
-                var user = "rmsan";
-                var domain = "duck.com";
-                var link = document.getElementById("consulting-email-link");
-                var text = document.getElementById("consulting-email-text");
-                if (link && text) {
-                    link.href = "mailto:" + user + "@" + domain;
-                    text.textContent = user + "@" + domain;
-                }
-            })();
-        </script>
     </div>
 </section>
 
@@ -87,6 +74,37 @@
             <h2>Research &amp; Publication Reviewer</h2>
             <p>Literature research and review, plus writing or reviewing scientific articles on request — grounded in a PhD and a track record of peer-reviewed publications in biomedical engineering and medical imaging.</p>
         </article>
+    </div>
+</section>
+
+<section class="section engagements-section" aria-labelledby="engagements-title">
+    <div class="container home-container">
+        <div class="section-heading">
+            <p class="eyebrow">Engagement models</p>
+            <h2 id="engagements-title">How a collaboration usually runs</h2>
+        </div>
+
+        <div class="engagement-grid">
+            <article class="engagement-card">
+                <p class="engagement-duration">Days to a few weeks</p>
+                <h3>Advisory &amp; second opinion</h3>
+                <p>Feasibility reviews, model and architecture critiques, build-vs-buy calls, and honest answers on whether AI is the right tool for the problem at all.</p>
+            </article>
+
+            <article class="engagement-card">
+                <p class="engagement-duration">Weeks to months</p>
+                <h3>Hands-on build</h3>
+                <p>Embedded delivery: data pipeline, model, evaluation and deployment &mdash; taking a promising demo through to something that survives production conditions.</p>
+            </article>
+
+            <article class="engagement-card">
+                <p class="engagement-duration">One-off or recurring</p>
+                <h3>Team enablement</h3>
+                <p>Workshops, mentoring, code and research reviews, and internal talks that leave your team able to keep going without me.</p>
+            </article>
+        </div>
+
+        <p class="engagements-note">Most projects start with a short call, a written problem statement and a small scoped first step &mdash; so we both know whether the collaboration works before anyone commits to a long engagement.</p>
     </div>
 </section>
 {% endblock %}

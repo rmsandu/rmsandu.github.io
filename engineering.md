@@ -134,7 +134,7 @@ profile:
   name: "Raluca-Maria Sandu"
   location: "Zurich, Switzerland"
   summary: "AI/ML engineer and researcher focused on computer vision, multimodal systems, medical imaging, and practical generative AI."
-  email: "rmsan@duck.com"
+  email: "raluca.sandu91@icloud.com"
   github: "https://github.com/rmsandu"
   linkedin: "https://linkedin.com/in/rmsandu"
   scholar: "https://scholar.google.com/citations?user=5qskcz0AAAAJ"
