@@ -12,13 +12,13 @@ profile:
 hero:
   eyebrow: "Applied AI Engineering & Consulting"
   heading: "Bring me the ambiguous AI problem."
-  intro: "I help teams figure out what is technically realistic, what is worth building, and how to turn it into a working AI solution."
+  intro: "I ask the right questions to help teams figure out what is the actual challenge, what is technically realistic, what is worth building, and how to turn it into a valuable solution into this vast AI landscape."
   secondary: "From technical discovery and model evaluation to prototyping, implementation and deployment."
   caption_role: "Applied AI/ML Consulting and Technical Product Leadership"
 
 problems:
   - quote: "We know AI could help us automate and improve our processes, but we don't know where to start."
-    body: "I help identify your pain points into concrete use cases, requirements and measurable technical outcomes."
+    body: "I help define your pain points into concrete use cases, requirements and measurable technical outcomes."
   - quote: "There are too many models and tools. Which approach actually makes sense for our use case?"
     body: "I evaluate realistic options based on performance, data, cost, infrastructure, privacy and implementation constraints."
   - quote: "The prototype works. Turning it into something reliable and secure at scale is another problem."
@@ -27,10 +27,10 @@ problems:
 how_i_help:
   - step: "Understand"
     title: "AI Discovery & Technical Strategy"
-    body: "Clarify the pain points, identify AI opportunities that bring value and revenue while keeping it technically realistic."
+    body: "Clarify the pain points, identify opportunities where AI/ML can bring value and revenue while keeping it technically realistic."
   - step: "Evaluate"
     title: "Model, Tool & Architecture Evaluation"
-    body: "Compare approaches and select models, tools and architectures based on your real constraints rather than hype."
+    body: "Compare approaches and select models, tools and architectures based on your real constraints."
   - step: "Build"
     title: "Prototyping & Implementation"
     body: "Build an MVP, test and architect solutions to help move promising prototypes toward real-world product use."
