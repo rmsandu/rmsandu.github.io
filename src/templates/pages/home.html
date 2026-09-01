@@ -78,12 +78,6 @@
             <a class="link-underline" href="{{ url_for('consulting') }}">More on how I work &rarr;</a>
         </div>
 
-        <div class="how-i-help-stepper" aria-hidden="true">
-            {% for step in home.how_i_help %}
-            <span class="how-i-help-stepper-dot">{{ loop.index }}</span>
-            {% endfor %}
-        </div>
-
         <ol class="how-i-help-list">
             {% for step in home.how_i_help %}
             <li class="how-i-help-item">
