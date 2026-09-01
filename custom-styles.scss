@@ -364,26 +364,50 @@ button:focus-visible {
 }
 
 .how-i-help-step-label {
-    align-items: center;
-    display: flex;
-    gap: 0.7rem;
+    margin-bottom: 0.6rem;
 }
 
-.how-i-help-step-label .eyebrow {
-    margin-bottom: 0;
+.how-i-help-stepper {
+    display: none;
 }
 
-.how-i-help-badge {
+@media (min-width: 1024px) {
+    .how-i-help-stepper {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        margin: 2.6rem 0 0;
+        position: relative;
+    }
+
+    .how-i-help-stepper::before {
+        background: var(--color-border);
+        content: "";
+        height: 1px;
+        left: 12.5%;
+        position: absolute;
+        right: 12.5%;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .how-i-help-list {
+        margin-top: 1rem;
+    }
+}
+
+.how-i-help-stepper-dot {
     align-items: center;
+    background: var(--color-leaf);
     border: 1px solid var(--color-forest);
     border-radius: 999px;
     color: var(--color-forest);
-    display: inline-flex;
-    flex-shrink: 0;
+    display: flex;
     font-size: 0.78rem;
     font-weight: 800;
     height: 1.8rem;
     justify-content: center;
+    justify-self: center;
+    position: relative;
     width: 1.8rem;
 }
 

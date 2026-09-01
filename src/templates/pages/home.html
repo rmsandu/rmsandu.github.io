@@ -73,18 +73,21 @@
         <div class="how-i-help-heading">
             <div class="section-heading">
                 <p class="eyebrow">How I help</p>
-                <h2 id="how-i-help-title">Understand &rarr; Evaluate &rarr; Build &rarr; Evaluate</h2>
+                <h2 id="how-i-help-title">My process, step by step.</h2>
             </div>
             <a class="link-underline" href="{{ url_for('consulting') }}">More on how I work &rarr;</a>
+        </div>
+
+        <div class="how-i-help-stepper" aria-hidden="true">
+            {% for step in home.how_i_help %}
+            <span class="how-i-help-stepper-dot">{{ loop.index }}</span>
+            {% endfor %}
         </div>
 
         <ol class="how-i-help-list">
             {% for step in home.how_i_help %}
             <li class="how-i-help-item">
-                <div class="how-i-help-step-label">
-                    <span class="how-i-help-badge">{{ loop.index }}</span>
-                    <span class="eyebrow">{{ step.step }}</span>
-                </div>
+                <p class="eyebrow how-i-help-step-label">{{ loop.index }}. {{ step.step }}</p>
                 <h3>{{ step.title }}</h3>
                 <p>{{ step.body }}</p>
             </li>

@@ -28,7 +28,7 @@ how_i_help:
   - step: "Understand"
     title: "AI Discovery & Technical Strategy"
     body: "Clarify the pain points, identify opportunities where AI/ML can bring value and revenue while keeping it technically realistic."
-  - step: "Evaluate"
+  - step: "Design"
     title: "Model, Tool & Architecture Evaluation"
     body: "Compare approaches and select models, tools and architectures based on your real constraints."
   - step: "Build"
