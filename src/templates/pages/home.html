@@ -31,8 +31,7 @@
                 <p class="home-summary is-personal">{{ home.hero.secondary }}</p>
 
                 <div class="home-cta-row">
-                    <a class="button-link" href="mailto:{{ home.profile.email }}">Discuss a problem</a>
-                    <a class="link-underline" href="#writing">See selected work &rarr;</a>
+                    <a class="button-link" href="mailto:{{ home.profile.email }}">Discuss an opportunity for collaboration</a>
                 </div>
             </div>
 
@@ -61,7 +60,6 @@
         <div class="problem-list">
             {% for problem in home.problems %}
             <article class="problem-item">
-                <span class="problem-bullet" aria-hidden="true">&bull;</span>
                 <blockquote class="problem-quote">&ldquo;{{ problem.quote }}&rdquo;</blockquote>
                 <p class="problem-body">{{ problem.body }}</p>
             </article>
@@ -75,7 +73,7 @@
         <div class="how-i-help-heading">
             <div class="section-heading">
                 <p class="eyebrow">How I help</p>
-                <h2 id="how-i-help-title">Understand &rarr; Plan &rarr; Build</h2>
+                <h2 id="how-i-help-title">Guidance at every step</h2>
             </div>
             <a class="link-underline" href="{{ url_for('consulting') }}">More on how I work &rarr;</a>
         </div>
@@ -83,10 +81,7 @@
         <ol class="how-i-help-list">
             {% for step in home.how_i_help %}
             <li class="how-i-help-item">
-                <div class="how-i-help-step-label">
-                    <span class="how-i-help-badge">{{ loop.index }}</span>
-                    <span class="eyebrow">{{ step.step }}</span>
-                </div>
+                <p class="eyebrow how-i-help-step-label">{{ loop.index }}. {{ step.step }}</p>
                 <h3>{{ step.title }}</h3>
                 <p>{{ step.body }}</p>
             </li>

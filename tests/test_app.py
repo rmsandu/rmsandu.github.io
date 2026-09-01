@@ -143,7 +143,7 @@ def test_homepage_render_flow():
     assert "https://github.com/rmsandu" in html
     assert "Bring me the ambiguous AI problem." in html
     assert "Does any of this sound familiar?" in html
-    assert "Understand &rarr; Plan &rarr; Build" in html
+    assert "Guidance at every step" in html
     assert "Selected writing" in html
     assert "CSL" not in html
     assert "A brief timeline" not in html
