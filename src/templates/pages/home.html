@@ -61,7 +61,6 @@
         <div class="problem-list">
             {% for problem in home.problems %}
             <article class="problem-item">
-                <span class="problem-bullet" aria-hidden="true">&bull;</span>
                 <blockquote class="problem-quote">&ldquo;{{ problem.quote }}&rdquo;</blockquote>
                 <p class="problem-body">{{ problem.body }}</p>
             </article>
@@ -75,7 +74,7 @@
         <div class="how-i-help-heading">
             <div class="section-heading">
                 <p class="eyebrow">How I help</p>
-                <h2 id="how-i-help-title">Understand &rarr; Plan &rarr; Build</h2>
+                <h2 id="how-i-help-title">Understand &rarr; Evaluate &rarr; Build &rarr; Evaluate</h2>
             </div>
             <a class="link-underline" href="{{ url_for('consulting') }}">More on how I work &rarr;</a>
         </div>
