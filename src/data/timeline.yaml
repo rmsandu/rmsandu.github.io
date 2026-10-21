@@ -14,7 +14,7 @@ timeline:
   - date: "2017-2022"
     type: "education"
     title: "PhD in Biomedical Engineering | University of Bern"
-    summary: "Developed quantitative medical image analysis algorithms for liver cancer using data from a 100-patient multicentre study; the research contributed to a clinical software produdct integrated into an image-guided navigation system."
+    summary: "Computer vision for medical imaging: developed quantitative image analysis algorithms for liver cancer using data from a 100-patient multicentre study; the research contributed to a clinical software produdct integrated into an image-guided navigation system."
     logo: "img/logos/unibern.png"
     logo_alt: "University of Bern logo"
 
@@ -34,7 +34,7 @@ timeline:
 
   - date: "2010-2014"
     type: "education"
-    title: "BSc in ControlSystems Engineering (Minor Applied Computer Science and Biomedical Engineering) | Politehnica University of Bucharest"
+    title: "BSc in Control Systems Engineering (Minor Applied Computer Science and Biomedical Engineering) | Politehnica University of Bucharest"
     summary: "In my BSc thesis project in collaboration with Philips Research I performed digital signal processing (volumetric capnography signals) for respiratory signals in healthy vs patients with respiratory dysfunctions."
     logo: "img/logos/politehnica-bucharest.png"
     logo_alt: "Politehnica University of Bucharest logo"

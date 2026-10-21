@@ -1,6 +1,6 @@
 {% extends "base.jinja" %}
 
-{% block meta_description %}{{ home.profile.name }} is an AI/ML engineer and researcher in Zurich, Switzerland, working on computer vision, generative AI, and medical imaging.{% endblock %}
+{% block meta_description %}{{ home.profile.name }} is a computer scientist and AI/ML engineer in Zurich, Switzerland, working on computer vision, generative AI, and medical imaging (PhD in Computer Vision for Medical Imaging).{% endblock %}
 
 {% block structured_data %}
 <script type="application/ld+json">
@@ -30,8 +30,16 @@
                 <p class="home-summary">{{ home.hero.intro }}</p>
                 <p class="home-summary is-personal">{{ home.hero.secondary }}</p>
 
+                <ul class="credibility-tags" aria-label="Focus areas">
+                    {% for item in home.hero.focus %}<li><span>{{ item }}</span></li>{% endfor %}
+                </ul>
+
                 <div class="home-cta-row">
-                    <a class="button-link" href="mailto:{{ home.profile.email }}">Discuss an opportunity for collaboration</a>
+                    <a class="button-link" href="mailto:{{ home.profile.email }}">Contact</a>
+                    <a class="link-underline" href="{{ home.profile.cv }}">CV</a>
+                    <a class="link-underline" href="{{ home.profile.linkedin }}">LinkedIn</a>
+                    <a class="link-underline" href="{{ home.profile.github }}">GitHub</a>
+                    <a class="link-underline" href="{{ home.profile.scholar }}">Scholar</a>
                 </div>
             </div>
 
@@ -41,52 +49,8 @@
                         <img src="{{ url_for('static', filename=home.profile.portrait) }}" alt="Portrait of Raluca-Maria Sandu">
                     </div>
                 </div>
-                <figcaption class="profile-caption">
-                    <span class="name">{{ home.profile.name }}</span>
-                    <span class="role-line">{{ home.hero.caption_role }}</span>
-                </figcaption>
             </figure>
         </div>
-    </div>
-</section>
-
-<section class="section problems-section" aria-labelledby="problems-title">
-    <div class="container home-container">
-        <div class="section-heading">
-            <p class="eyebrow">The starting point</p>
-            <h2 id="problems-title">Does any of this sound familiar?</h2>
-        </div>
-
-        <div class="problem-list">
-            {% for problem in home.problems %}
-            <article class="problem-item">
-                <blockquote class="problem-quote">&ldquo;{{ problem.quote }}&rdquo;</blockquote>
-                <p class="problem-body">{{ problem.body }}</p>
-            </article>
-            {% endfor %}
-        </div>
-    </div>
-</section>
-
-<section class="section how-i-help-section" aria-labelledby="how-i-help-title">
-    <div class="container home-container">
-        <div class="how-i-help-heading">
-            <div class="section-heading">
-                <p class="eyebrow">How I help</p>
-                <h2 id="how-i-help-title">Guidance at every step</h2>
-            </div>
-            <a class="link-underline" href="{{ url_for('consulting') }}">More on how I work &rarr;</a>
-        </div>
-
-        <ol class="how-i-help-list">
-            {% for step in home.how_i_help %}
-            <li class="how-i-help-item">
-                <p class="eyebrow how-i-help-step-label">{{ loop.index }}. {{ step.step }}</p>
-                <h3>{{ step.title }}</h3>
-                <p>{{ step.body }}</p>
-            </li>
-            {% endfor %}
-        </ol>
     </div>
 </section>
 
@@ -94,7 +58,7 @@
     <div class="container home-container">
         <div class="writing-heading">
             <div class="section-heading">
-                <p class="eyebrow">How I work and think</p>
+                <p class="eyebrow">Recent</p>
                 <h2 id="writing-title">Selected writing</h2>
             </div>
             <div class="writing-links">

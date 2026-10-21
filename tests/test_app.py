@@ -141,11 +141,14 @@ def test_homepage_render_flow():
     assert "Raluca-Maria Sandu" in html
     assert "raluca.sandu91@icloud.com" in html
     assert "https://github.com/rmsandu" in html
-    assert "Bring me the ambiguous AI problem." in html
-    assert "Does any of this sound familiar?" in html
-    assert "Guidance at every step" in html
+    assert "Applied AI/ML Engineer" in html
+    assert ">Contact<" in html
+    assert "Hire me" not in html
+    assert "Does any of this sound familiar?" not in html
+    assert "Guidance at every step" not in html
     assert "Selected writing" in html
-    assert "CSL" not in html
+    assert "PhD in Computer Vision for Medical Imaging" in html
+    assert "Previously at Philips Research, CSL Behring and Accenture" in html
     assert "A brief timeline" not in html
     assert ">Path<" not in html
 
